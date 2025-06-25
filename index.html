@@ -3,47 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Ethan Ragbir</title>
+  <title>Ethan Ragbir</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
       background: #ffffff;
       color: #000;
-      margin: 0;
-      padding: 40px;
     }
-    .back {
-      margin-bottom: 30px;
+    /* --- GRID LAYOUT -------------------------------------------- */
+    .layout {
+      display: grid;
+      grid-template-columns: 200px 1fr 200px; /* left | center | right */
+      min-height: 100vh;
     }
-    .back a {
-      color: blue;
+    /* --- SIDEBAR LINKS ------------------------------------------- */
+    .sidebar {
+      padding: 30px 20px;
+    }
+    .sidebar a {
+      display: block;
       font-weight: bold;
+      color: blue;
       text-decoration: none;
+      margin-bottom: 14px;
     }
-    .back a:hover { text-decoration: underline; }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+    .sidebar a:hover {
+      text-decoration: underline;
     }
-    .info {
-      font-size: 18px;
-      line-height: 1.6;
+    /* --- MAIN / LANDING CONTENT ---------------------------------- */
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
     }
-    .info a {
+    .main-content {
+      max-width: 650px;
+    }
+    .main-content img {
+      width: 150px;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+    .main-content h1 {
+      font-size: 32px;
+      margin: 0 0 8px 0;
+    }
+    .main-content h2 a {
+      font-size: 22px;
       color: blue;
       text-decoration: none;
     }
-    .info a:hover { text-decoration: underline; }
+    .main-content h2 a:hover {
+      text-decoration: underline;
+    }
+    .main-content p {
+      margin-top: 24px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
   </style>
 </head>
 <body>
-  <div class="back"><a href="index.html">&larr; Back to Home</a></div>
-  <h1>Contact Information</h1>
-  <div class="info">
-    <p><strong>Email:</strong> <a href="mailto:ethanragbir@EthanRagbir.com">ethanragbir@EthanRagbir.com</a></p>
-    <p><strong>Phone:</strong> (718) 607-6955</p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">linkedin.com/in/ethan-ragbir</a></p>
-    <p><strong>GitHub:</strong> <a href="https://github.com/Ethan-Ragbir" target="_blank">github.com/Ethan-Ragbir</a></p>
+  <div class="layout">
+
+    <!-- LEFT SIDEBAR (3 items) -->
+    <nav class="sidebar" aria-label="Primary">
+      <a href="contact.html">Contact&nbsp;Info</a>
+      <a href="Resume from Overleaf.pdf" target="_blank">Resume&nbsp;(PDF)</a>
+      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
+    </nav>
+
+    <!-- MAIN LANDING SECTION -->
+    <main class="main">
+      <div class="main-content">
+        <img src="your-profile.jpg" alt="Ethan Ragbir" />
+        <h1>Ethan Ragbir</h1>
+        <h2><a href="https://tcnj.edu" target="_blank">The College of New Jersey</a></h2>
+        <p>
+          Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey,
+          studying mathematics and physics. I conduct research in geophysics and
+          particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
+        </p>
+      </div>
+    </main>
+
+    <!-- RIGHT SIDEBAR (2 items) -->
+    <nav class="sidebar" aria-label="Secondary">
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+
   </div>
 </body>
 </html>
