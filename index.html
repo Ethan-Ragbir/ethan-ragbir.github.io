@@ -3,89 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethan Ragbir</title>
+  <title>Contact | Ethan Ragbir</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #000;
       margin: 0;
-      background-color: white;
-      color: black;
+      padding: 40px;
     }
-    .layout {
-      display: grid;
-      grid-template-columns: 200px 1fr 200px;
-      min-height: 100vh;
+    .back {
+      margin-bottom: 30px;
     }
-    .sidebar {
-      padding: 20px;
-    }
-    .sidebar a {
-      display: block;
+    .back a {
       color: blue;
       font-weight: bold;
       text-decoration: none;
-      margin-bottom: 15px;
     }
-    .sidebar a:hover {
-      text-decoration: underline;
+    .back a:hover { text-decoration: underline; }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
     }
-    .main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px;
+    .info {
+      font-size: 18px;
+      line-height: 1.6;
     }
-    .main-content {
-      max-width: 600px;
-    }
-    .main h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-    .main h2 a {
-      font-size: 22px;
+    .info a {
       color: blue;
       text-decoration: none;
     }
-    .main h2 a:hover {
-      text-decoration: underline;
-    }
-    .main p {
-      font-size: 16px;
-      margin-top: 20px;
-    }
+    .info a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div class="layout">
-    <div class="sidebar">
-      <a href="contact.html">Contact Info</a>
-      <a href="Resume from Overleaf.pdf" target="_blank">Resume (PDF)</a>
-      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
-      <a href="research.html">Research</a>
-      <a href="projects.html">Projects</a>
-    </div>
-    <div class="main">
-      <div class="main-content">
-        <img src="your-profile.jpg" alt="Ethan Ragbir" style="width:150px;height:auto;margin-bottom:20px;" />
-        <h1>Ethan Ragbir</h1>
-        <h2><a href="https://tcnj.edu" target="_blank">The College of New Jersey</a></h2>
-        <p>
-          Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey,
-          studying mathematics and physics. I conduct research in geophysics and
-          particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
-        </p>
-      </div>
-    </div>
-    <div class="sidebar">
-      <a href="#">Blog</a>
-      <a href="#">Papers & Preprints</a>
-      <a href="Resume from Overleaf.pdf" target="_blank">CV</a>
-      <a href="#">Math Resources</a>
-      <a href="#">Teaching</a>
-      <a href="#">Seminars</a>
-    </div>
+  <div class="back"><a href="index.html">&larr; Back to Home</a></div>
+  <h1>Contact Information</h1>
+  <div class="info">
+    <p><strong>Email:</strong> <a href="mailto:ethanragbir@EthanRagbir.com">ethanragbir@EthanRagbir.com</a></p>
+    <p><strong>Phone:</strong> (718) 607-6955</p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">linkedin.com/in/ethan-ragbir</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/Ethan-Ragbir" target="_blank">github.com/Ethan-Ragbir</a></p>
   </div>
 </body>
 </html>
