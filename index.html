@@ -7,89 +7,76 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       margin: 0;
-      background: white;
+      padding: 0;
+      background-color: white;
       color: black;
     }
-    .container {
-      display: grid;
-      grid-template-areas:
-        "contact center linkedin"
-        "research center cv"
-        "projects center cv";
-      grid-template-columns: 1fr 2fr 1fr;
-      grid-template-rows: auto auto auto;
-      gap: 30px;
-      padding: 40px;
+    .layout {
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 200px;
+      padding: 20px;
+      background-color: #f0f0f0;
     }
     .sidebar a {
       display: block;
       color: blue;
       font-weight: bold;
       text-decoration: none;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .sidebar a:hover {
       text-decoration: underline;
     }
-    .contact { grid-area: contact; }
-    .linkedin { grid-area: linkedin; }
-    .research { grid-area: research; }
-    .projects { grid-area: projects; }
-    .cv { grid-area: cv; }
-    .center {
-      grid-area: center;
+    .main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 40px;
     }
-    .center h1 {
-      font-size: 28px;
-      font-weight: bold;
+    .main h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
     }
-    .center h2 {
+    .main h2 a {
       font-size: 22px;
-    }
-    .center h2 a {
       color: blue;
       text-decoration: none;
     }
-    .center h2 a:hover {
+    .main h2 a:hover {
       text-decoration: underline;
     }
-    .center p {
-      max-width: 500px;
-      margin: 0 auto;
+    .main p {
+      max-width: 600px;
+      margin: 20px auto 0 auto;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="sidebar contact">
-      <a href="mailto:ethanragbir@EthanRagbir.com">Contact Info</a>
-    </div>
-    <div class="sidebar linkedin">
+  <div class="layout">
+    <div class="sidebar">
+      <a href="contact.html">Contact Info</a>
       <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
-    </div>
-    <div class="sidebar research">
       <a href="research.html">Research</a>
-    </div>
-    <div class="sidebar projects">
       <a href="projects.html">Projects</a>
-    </div>
-    <div class="sidebar cv">
       <a href="Resume from Overleaf.pdf" target="_blank">CV (PDF)</a>
     </div>
-    <div class="center">
-      <h1>Ethan Ragbir</h1>
-      <h2><a href="https://tcnj.edu" target="_blank">The College of New Jersey</a></h2>
-      <p>
-        Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey,
-        studying mathematics and physics. I conduct research in geophysics and
-        particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
-      </p>
+    <div class="main">
+      <div>
+        <h1>Ethan Ragbir</h1>
+        <h2><a href="https://tcnj.edu" target="_blank">The College of New Jersey</a></h2>
+        <p>
+          Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey,
+          studying mathematics and physics. I conduct research in geophysics and
+          particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
+        </p>
+      </div>
     </div>
   </div>
 </body>
