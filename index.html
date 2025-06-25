@@ -5,98 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ethan Ragbir</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #ffffff;
-      color: #000;
-    }
-    /* --- GRID LAYOUT -------------------------------------------- */
-    .layout {
-      display: grid;
-      grid-template-columns: 200px 1fr 200px; /* left | center | right */
-      min-height: 100vh;
-    }
-    /* --- SIDEBAR LINKS ------------------------------------------- */
-    .sidebar {
-      padding: 30px 20px;
-    }
-    .sidebar a {
-      display: block;
-      font-weight: bold;
-      color: blue;
-      text-decoration: none;
-      margin-bottom: 14px;
-    }
-    .sidebar a:hover {
-      text-decoration: underline;
-    }
-    /* --- MAIN / LANDING CONTENT ---------------------------------- */
-    .main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      text-align: center;
-    }
-    .main-content {
-      max-width: 650px;
-    }
-    .main-content img {
-      width: 150px;
-      height: auto;
-      border-radius: 4px;
-      margin-bottom: 24px;
-    }
-    .main-content h1 {
-      font-size: 32px;
-      margin: 0 0 8px 0;
-    }
-    .main-content h2 a {
-      font-size: 22px;
-      color: blue;
-      text-decoration: none;
-    }
-    .main-content h2 a:hover {
-      text-decoration: underline;
-    }
-    .main-content p {
-      margin-top: 24px;
-      font-size: 16px;
-      line-height: 1.45;
-    }
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fff;color:#000}
+    .layout{display:grid;grid-template-columns:190px 1fr 190px;min-height:100vh}
+    .sidebar{padding:30px 20px}
+    .sidebar a{display:block;margin-bottom:14px;font-weight:bold;color:#0645ad;text-decoration:none}
+    .sidebar a:hover{text-decoration:underline}
+    .main{display:flex;justify-content:center;align-items:center;padding:40px;text-align:center}
+    .main-content{max-width:650px}
+    .main-content img{width:150px;height:auto;border-radius:4px;margin-bottom:24px}
+    .main-content h1{font-size:32px;margin:0 0 8px}
+    .main-content h2 a{font-size:22px;color:#0645ad;text-decoration:none}
+    .main-content h2 a:hover{text-decoration:underline}
+    .main-content p{margin-top:24px;font-size:16px;line-height:1.45}
   </style>
 </head>
 <body>
   <div class="layout">
-
-    <!-- LEFT SIDEBAR (3 items) -->
+    <!-- LEFT SIDEBAR -->
     <nav class="sidebar" aria-label="Primary">
-      <a href="contact-me.html">Contact&nbsp;Info</a>
-      <a href="Resume from Overleaf.pdf" target="_blank">Resume&nbsp;(PDF)</a>
+      <a href="https://ethan-ragbir.github.io/Contact-Me.html">Contact&nbsp;Info</a>
+      <a href="resume.pdf" target="_blank">Resume&nbsp;(PDF)</a>
       <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
     </nav>
 
-    <!-- MAIN LANDING SECTION -->
+    <!-- MAIN -->
     <main class="main">
       <div class="main-content">
-        <img src="your-profile.jpg" alt="Ethan Ragbir" />
+        <img src="your-profile.jpg" alt="Ethan Ragbir">
         <h1>Ethan Ragbir</h1>
         <h2><a href="https://tcnj.edu" target="_blank">The College of New Jersey</a></h2>
         <p>
-          Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey,
-          studying mathematics and physics. I conduct research in geophysics and
-          particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
+          Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey studying mathematics and physics.
+          I conduct research in geophysics and particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
         </p>
       </div>
     </main>
 
-    <!-- RIGHT SIDEBAR (2 items) -->
+    <!-- RIGHT SIDEBAR -->
     <nav class="sidebar" aria-label="Secondary">
       <a href="research.html">Research</a>
       <a href="projects.html">Projects</a>
     </nav>
-
   </div>
 </body>
 </html>
