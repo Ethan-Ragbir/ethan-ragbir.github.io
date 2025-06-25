@@ -2,26 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethan Ragbir | Home</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ethan Ragbir | Academic Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      margin: 40px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .sidebar {
+      width: 20%;
+      line-height: 1.8;
+    }
+    .sidebar a {
+      color: blue;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+    .main {
+      width: 60%;
+      text-align: center;
+    }
+    .main img {
+      width: 180px;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    .main h1 {
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .main h2 a {
+      color: blue;
+      text-decoration: none;
+    }
+    .main h2 a:hover {
+      text-decoration: underline;
+    }
+    .main p {
+      text-align: left;
+      font-size: 16px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900 flex items-center justify-center min-h-screen">
+<body>
 
-  <!-- Main Landing Section -->
-  <main class="text-center p-8">
-    <h1 class="text-4xl font-bold mb-4">Hi, my name is Ethan Ragbir</h1>
-    <p class="text-xl mb-8">
-      I'm a sophomore at The College of New Jersey studying mathematics and physics. I do research in geophysics and particle physics.
-    </p>
-
-    <!-- Navigation Buttons -->
-    <div class="space-x-4">
-      <a href="Resume from Overleaf.pdf" target="_blank" class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">View Resume</a>
-      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank" class="bg-gray-800 text-white px-5 py-2 rounded hover:bg-gray-900">LinkedIn</a>
-      <a href="mailto:ethanragbir@EthanRagbir.com" class="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700">Contact Me</a>
+  <div class="container">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <a href="mailto:ethanragbir@EthanRagbir.com">Contact Info</a><br>
+      <a href="Resume from Overleaf.pdf" target="_blank">Resume (PDF)</a><br>
+      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a><br>
+      <a href="#">Research</a><br>
+      <a href="#">Projects</a><br>
+      <a href="#">Talks & Notes</a><br>
     </div>
-  </main>
+
+    <!-- Main Content -->
+    <div class="main">
+      <img src="your-profile.jpg" alt="Ethan Ragbir">
+      <h1>Ethan Ragbir</h1>
+      <h2><a href="#">The College of New Jersey</a></h2>
+      <p>
+        Hi, my name is Ethan Ragbir. I'm a sophomore at The College of New Jersey, studying mathematics and physics.
+        I conduct research in geophysics and particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
+      </p>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="sidebar">
+      <a href="#">Blog</a><br>
+      <a href="#">Papers & Preprints</a><br>
+      <a href="#">CV</a><br>
+      <a href="#">Math Resources</a><br>
+      <a href="#">Teaching</a><br>
+      <a href="#">Seminars</a><br>
+    </div>
+  </div>
 
 </body>
 </html>
