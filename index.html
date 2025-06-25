@@ -8,18 +8,16 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
       background-color: white;
       color: black;
     }
     .layout {
-      display: flex;
-      height: 100vh;
+      display: grid;
+      grid-template-columns: 200px 1fr 200px;
+      min-height: 100vh;
     }
     .sidebar {
-      width: 200px;
       padding: 20px;
-      background-color: #f0f0f0;
     }
     .sidebar a {
       display: block;
@@ -32,12 +30,14 @@
       text-decoration: underline;
     }
     .main {
-      flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 40px;
+    }
+    .main-content {
+      max-width: 600px;
     }
     .main h1 {
       font-size: 32px;
@@ -52,9 +52,8 @@
       text-decoration: underline;
     }
     .main p {
-      max-width: 600px;
-      margin: 20px auto 0 auto;
       font-size: 16px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -62,13 +61,14 @@
   <div class="layout">
     <div class="sidebar">
       <a href="contact.html">Contact Info</a>
+      <a href="Resume from Overleaf.pdf" target="_blank">Resume (PDF)</a>
       <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
       <a href="research.html">Research</a>
       <a href="projects.html">Projects</a>
-      <a href="Resume from Overleaf.pdf" target="_blank">CV (PDF)</a>
     </div>
     <div class="main">
-      <div>
+      <div class="main-content">
+        <img src="your-profile.jpg" alt="Ethan Ragbir" style="width:150px;height:auto;margin-bottom:20px;" />
         <h1>Ethan Ragbir</h1>
         <h2><a href="https://tcnj.edu" target="_blank">The College of New Jersey</a></h2>
         <p>
@@ -77,6 +77,14 @@
           particle physics through programs at TCNJ, CERN, Princeton, and General Dynamics.
         </p>
       </div>
+    </div>
+    <div class="sidebar">
+      <a href="#">Blog</a>
+      <a href="#">Papers & Preprints</a>
+      <a href="Resume from Overleaf.pdf" target="_blank">CV</a>
+      <a href="#">Math Resources</a>
+      <a href="#">Teaching</a>
+      <a href="#">Seminars</a>
     </div>
   </div>
 </body>
