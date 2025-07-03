@@ -1,0 +1,134 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{needspace}
+\usepackage{tikz}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Ethan Ragbir}
+\lhead{Resume}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+\titleformat{\section}{\Large\bfseries}{}{0em}{}
+
+% Prevent section from being split over pages
+\pretocmd{\section}{\Needspace{5\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{3\baselineskip}}{}{}
+
+% Full-width section separator line
+\newcommand{\sectionline}{\noindent\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\LARGE Ethan Ragbir} \\
+    \vspace{2mm}
+    ragbire1@tcnj.edu $\vert$ (718) 607-6955 $\vert$
+    \href{https://www.linkedin.com/in/ethan-ragbir-6032b42a3}{linkedin.com/in/ethan-ragbir-6032b42a3} $\vert$ 
+    \href{https://github.com/Ethan-Ragbir}{github.com/Ethan-Ragbir} \\
+\end{center}
+
+\section*{Education}
+\textbf{The College of New Jersey (TCNJ)} \\
+\textit{Expected Graduation: 2028} \\
+B.S. in Mathematics and Physics \\
+\textit{Relevant Coursework:} Classical Mechanics, Electromagnetism, Quantum Physics, Statistical Mechanics, Multivariable Calculus, Differential Equations, Abstract Algebra, Numerical Analysis, Discrete Structures, Machine Learning.
+
+
+
+\sectionline
+
+\section*{Experience}
+\textbf{Undergraduate Researcher} \hfill \textit{Jun 2025 -- Present} \\
+\textit{CERN, Compact Muon Solenoid (CMS) Experiment} \\
+Developing a neural-network-based machine learning algorithm to analyze CMS detector data. Enhancing supersymmetry search capabilities beyond 275 GeV. Collaborating with the Rutgers High Energy eXperiment (HEX) group to establish a research team at TCNJ. \\
+\textbf{Skills:} Particle Physics, Deep Learning, ROOT
+
+\textbf{Undergraduate Researcher} \hfill \textit{Apr 2025 -- Present} \\
+\textit{The College of New Jersey} \\
+Studying ice crystal morphology using scanning electron microscopy (SEM) under Dr. Nate Magee. Investigating behavior in extreme environments to improve climate modeling. \\
+\textbf{Skills:} SEM, Image Analysis, Climate Physics
+
+\textbf{Research Intern} \hfill \textit{Apr 2025 -- Present} \\
+\textit{General Dynamics} \\
+Applied machine learning and retrieval-augmented generation (RAG) to optimize jet propulsion dynamics. Integrated real-world datasets with physical models to improve system performance. \\
+\textbf{Skills:} Machine Learning, Computational Modeling
+
+\textbf{Machine Learning Engineer Intern} \hfill \textit{Jan 2025 -- May 2025} \\
+\textit{Stealth Startup} \\
+Contributed to large language model (LLM) NLP systems under non-disclosure agreement. Supported model training and deployment pipelines. \\
+\textbf{Skills:} Natural Language Processing, Python, Production ML
+
+\textbf{Matroid Theory Researcher} \hfill \textit{Jun 2024 -- Sep 2024} \\
+\textit{Princeton University} \\
+Analyzed matroid structures in discrete mathematics for optimization and network reliability. Applied concepts to theoretical computer science problems. \\
+\textbf{Skills:} Discrete Math, Optimization, Proof Techniques
+
+\textbf{Software Engineer Intern} \hfill \textit{Apr 2023 -- Dec 2023} \\
+\textit{New Jersey Institute of Technology (NJIT)} \\
+Maintained backend systems and contributed to scalable application development. Built RESTful APIs under faculty supervision. \\
+\textbf{Skills:} Software Engineering, Python, Git
+
+\sectionline
+
+\section*{Technical Skills}
+\textbf{Languages:} Python, C++, Java, MATLAB, LaTeX \\
+\textbf{Tools / Libraries:} Git, TensorFlow, PyTorch, CERN ROOT, OpenCV, LangChain, VS Code, Firebase, PostgreSQL, Linux, Bash, Docker, Conda, Jupyter, Pandas, NumPy
+
+\sectionline
+
+\section*{Projects}
+\textbf{Particle Detection with Neural Networks} \hfill \textit{CERN, 2025} \\
+Built a classifier to identify particle interactions in CMS detector data. Integrated CERN ROOT preprocessing and TensorFlow training workflows.
+
+\textbf{Geophysical Ice Imaging Toolkit} \hfill \textit{TCNJ, 2025} \\
+Automated extraction of morphological features of ice crystals using SEM. Developed batch-processing pipeline to support climate model research.
+
+\textbf{Monte Carlo Jet Propulsion Simulator} \hfill \textit{General Dynamics, 2025} \\
+Simulated jet propulsion dynamics with Monte Carlo methods. Integrated physics-informed ML to analyze flow stability.
+
+\textbf{Matroid Optimizer} \hfill \textit{Princeton University, 2024} \\
+Developed Python tool for evaluating matroid rank, closure, and independence properties. Used in optimization and graph theory research.
+
+\sectionline
+
+\section*{Extracurricular Activities}
+\textbf{Putnam Competition Team} \hfill \textit{Since Fall 2024} \\
+The College of New Jersey \\
+Compete in the William Lowell Putnam Mathematical Competition with intensive problem-solving training in advanced mathematics.
+
+\textbf{Mathematical Olympiad Prep Team} \hfill \textit{ Fall 2022 - June 2024} \\
+Frankloing  \\
+Weekly sessions in number theory, combinatorics, and geometry to prepare for national mathematical competitions.
+
+\textbf{Chess Club} \hfill \textit{Since Fall 2024]} \\
+The College of New Jersey \\
+Participate in weekly tournaments and rated practice. Studying classical openings and tactics.
+
+\sectionline
+
+\section*{Volunteer Experience}
+\textbf{Bonner Community Scholar} \hfill \textit{Aug 2024 -- Present} \\
+The College of New Jersey \\
+Complete 300+ community service hours per academic year. Engage in social justice education, civic engagement, and public service projects.
+
+\textbf{Red Cross Volunteer Representative} \hfill \textit{2024 -- Present} \\
+American Red Cross \\
+Serve as a youth representative for disaster relief coordination and public outreach campaigns.
+
+\sectionline
+
+\section*{Professional Memberships}
+\textbf{Institute of Electrical and Electronics Engineers (IEEE)} \hfill \textit{Feb 2025 -- Present} \\
+\textbf{American Physical Society (APS)} \hfill \textit{2025 -- Present} \\
+\textbf{Society for Industrial and Applied Mathematics (SIAM)} \hfill \textit{2025 -- Present}
+
+\end{document}
