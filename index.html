@@ -128,18 +128,20 @@
       color: #caf8ff;
       letter-spacing: 0.01em;
     }
-    .pixel-cat {
-      position: absolute;
-      top: -40px;
-      left: 24px;
+    .walking-cat {
+      position: fixed;
+      left: 30vw;
+      bottom: 32px;
+      z-index: 1010;
+      width: 78px;
+      height: 60px;
       cursor: pointer;
+      user-select: none;
       transition: transform 0.13s;
-      z-index: 5;
-      filter: drop-shadow(0 2px 4px #5eb1bf55);
       image-rendering: pixelated;
     }
-    .pixel-cat:active {
-      transform: scale(1.13) rotate(-8deg);
+    .walking-cat:active {
+      transform: scale(1.15) rotate(-8deg);
     }
     @media (max-width: 990px) {
       .layout {
@@ -172,7 +174,10 @@
       .main-content {
         padding: 14vw 1vw 14vw 1vw;
       }
-      .pixel-cat { left: 5vw; top: -27px; }
+      .walking-cat {
+        width: 55px; height: 42px;
+        bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -196,24 +201,6 @@
     <!-- MAIN -->
     <main class="main">
       <div class="main-content">
-        <div class="pixel-cat" id="cat-pixel" title="Click me!">
-          <!-- Simple pixel-art cat SVG (can be replaced with a PNG or different SVG if you like) -->
-          <svg id="cat-face" width="56" height="44" viewBox="0 0 56 44" style="image-rendering:pixelated">
-            <!-- Head -->
-            <rect x="12" y="10" width="32" height="26" rx="7" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-            <!-- Left ear -->
-            <polygon points="13,14 18,2 22,14" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-            <!-- Right ear -->
-            <polygon points="35,14 39,2 43,14" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-            <!-- Eyes (default) -->
-            <ellipse id="eye-left" cx="22" cy="24" rx="3" ry="5" fill="#fafafa"/>
-            <ellipse id="eye-right" cx="34" cy="24" rx="3" ry="5" fill="#fafafa"/>
-            <ellipse id="pupil-left" cx="22" cy="26" rx="1.1" ry="2" fill="#23222f"/>
-            <ellipse id="pupil-right" cx="34" cy="26" rx="1.1" ry="2" fill="#23222f"/>
-            <!-- Mouth -->
-            <path id="cat-mouth" d="M27 32 Q28 34 29 32" stroke="#fafafa" stroke-width="2" fill="none"/>
-          </svg>
-        </div>
         <img src="your-profile.jpg" alt="Ethan Ragbir">
         <h1>Ethan Ragbir</h1>
         <h2>
@@ -243,24 +230,66 @@
       </a>
     </nav>
   </div>
+  <!-- Walking Cat SVG -->
+  <div class="walking-cat" id="walkingCat">
+    <svg id="catSprite" width="78" height="60" viewBox="0 0 78 60" style="image-rendering: pixelated;">
+      <g id="catFrame1">
+        <rect x="18" y="26" width="40" height="20" rx="7" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <rect x="46" y="13" width="19" height="19" rx="6" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <polygon points="48,20 52,6 57,19" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <polygon points="62,19 68,8 66,20" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <ellipse id="cat-eye1-L" cx="56" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
+        <ellipse id="cat-eye1-R" cx="65" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
+        <ellipse id="cat-pupil1-L" cx="56" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
+        <ellipse id="cat-pupil1-R" cx="65" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
+        <path id="cat-mouth1" d="M59 30 Q60.5 32 62 30" stroke="#fafafa" stroke-width="2" fill="none"/>
+        <path d="M20 32 Q4 34 22 52" stroke="#7fd7e6" stroke-width="4" fill="none"/>
+        <rect x="24" y="42" width="6" height="10" rx="3" fill="#7fd7e6"/>
+        <rect x="38" y="43" width="6" height="10" rx="3" fill="#7fd7e6"/>
+      </g>
+      <g id="catFrame2" style="display:none;">
+        <rect x="18" y="26" width="40" height="20" rx="7" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <rect x="46" y="13" width="19" height="19" rx="6" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <polygon points="48,20 52,6 57,19" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <polygon points="62,19 68,8 66,20" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+        <ellipse cx="56" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
+        <ellipse cx="65" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
+        <ellipse id="cat-pupil2-L" cx="56" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
+        <ellipse id="cat-pupil2-R" cx="65" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
+        <path id="cat-mouth2" d="M59 30 Q60.5 34 62 30" stroke="#fafafa" stroke-width="2" fill="none"/>
+       
+    <rect x="24" y="44" width="6" height="8" rx="3" fill="#7fd7e6"/>
+        <rect x="38" y="42" width="6" height="10" rx="3" fill="#7fd7e6"/>
+      </g>
+    </svg>
+  </div>
   <script>
-    // Cat face interaction
-    const cat = document.getElementById('cat-pixel');
-    let isSmiling = false;
+    // Walking pixel cat: walks left/right across the bottom
+    let cat = document.getElementById('walkingCat');
+    let frame = 1, pos = window.innerWidth * 0.3, direction = 1;
+    let width = window.innerWidth;
+    function walkCat() {
+      document.getElementById('catFrame1').style.display = frame ? 'block' : 'none';
+      document.getElementById('catFrame2').style.display = frame ? 'none' : 'block';
+      pos += direction * 1.5;
+      if (pos > width-90) { direction = -1; cat.style.transform = 'scaleX(-1)'; }
+      if (pos < 5) { direction = 1; cat.style.transform = 'scaleX(1)'; }
+      cat.style.left = pos + 'px';
+      frame ^= 1;
+      requestAnimationFrame(walkCat);
+    }
+    walkCat();
+    window.addEventListener('resize', () => { width = window.innerWidth; });
+    // On click, make the cat smile (changes both frames)
     cat.addEventListener('click', () => {
-      const mouth = document.getElementById('cat-mouth');
-      const pupilL = document.getElementById('pupil-left');
-      const pupilR = document.getElementById('pupil-right');
-      if (!isSmiling) {
-        mouth.setAttribute('d','M25 31 Q28 37 31 31'); // Big smile
-        pupilL.setAttribute('cy','28');
-        pupilR.setAttribute('cy','28');
-      } else {
-        mouth.setAttribute('d','M27 32 Q28 34 29 32'); // Normal
-        pupilL.setAttribute('cy','26');
-        pupilR.setAttribute('cy','26');
-      }
-      isSmiling = !isSmiling;
+      let mouth1 = document.getElementById('cat-mouth1');
+      let mouth2 = document.getElementById('cat-mouth2');
+      mouth1.setAttribute('d','M59 30 Q60.5 38 62 30');
+      mouth2.setAttribute('d','M59 30 Q60.5 38 62 30');
+      setTimeout(() => {
+        mouth1.setAttribute('d','M59 30 Q60.5 32 62 30');
+        mouth2.setAttribute('d','M59 30 Q60.5 34 62 30');
+      }, 900);
     });
   </script>
 </body>
