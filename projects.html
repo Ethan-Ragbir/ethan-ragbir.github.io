@@ -4,33 +4,105 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Ethan Ragbir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fff;color:#000}
-    .container{max-width:600px;margin:60px auto 48px auto;padding:36px 24px 48px 24px;background:#f9f9f9;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.07)}
-    h1{font-size:32px;margin-bottom:16px;text-align:center}
+    body{
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      margin: 0;
+      background: linear-gradient(120deg, #181923 0%, #353a5d 60%, #5eb1bf 100%);
+      color: #e8eaf1;
+      min-height: 100vh;
+      transition: background 0.6s cubic-bezier(.7,0,.3,1);
+      overflow-x: hidden;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadein 0.7s cubic-bezier(.7,0,.3,1) 0.1s forwards;
+    }
+    @keyframes fadein {
+      to { opacity: 1; }
+    }
+    .container{
+      max-width: 600px;
+      margin: 60px auto 48px auto;
+      padding: 36px 24px 48px 24px;
+      background: rgba(34,37,44,0.95);
+      border-radius: 24px;
+      box-shadow: 0 4px 22px rgba(90,130,180,0.11);
+      border: 2px solid #7fd7e6;
+    }
+    h1{
+      font-size: 32px;
+      margin-bottom: 16px;
+      text-align:center;
+      color: #caf8ff;
+      font-weight: 800;
+    }
     ul{list-style:none;padding:0}
     li{margin:36px 0 18px 0;text-align:left}
-    a.project-link{font-size:20px;font-weight:bold;color:#0645ad;text-decoration:none;transition:color 0.2s}
-    a.project-link:hover{text-decoration:underline;color:#0534a0}
-    .desc{font-size:15px;color:#444;margin-top:7px;margin-left:4px}
-    .back-link{display:inline-block;font-size:20px;text-decoration:none;color:#0645ad;}
-    .back-link:hover{text-decoration:underline;}
-    .proj-date{display:block;color:#888;font-size:13px;margin-top:4px;}
+    a.project-link{
+      font-size:20px;
+      font-weight:700;
+      color:#7fd7e6;
+      text-decoration:none;
+      transition:color 0.2s;
+      letter-spacing: 0.01em;
+    }
+    a.project-link:hover{
+      text-decoration:underline;
+      color:#caf8ff;
+    }
+    .desc{
+      font-size:15px;
+      color:#caf8ff;
+      margin-top:7px;
+      margin-left:4px
+    }
+    .back-link{
+      display:inline-block;
+      font-size:20px;
+      text-decoration:none;
+      color:#7fd7e6;
+      margin:18px 0 0 12px;
+      font-weight:600;
+      transition: color 0.17s;
+    }
+    .back-link:hover{
+      text-decoration:underline;
+      color: #caf8ff;
+    }
+    .proj-date{
+      display:block;
+      color:#9ae3ef;
+      font-size:13px;
+      margin-top:4px;
+    }
+    @media (max-width:700px){
+      .container{
+        padding: 24px 5vw 34px 5vw;
+        border-radius: 14px;
+      }
+      h1{ font-size: 1.5rem;}
+    }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-link" style="margin:18px 0 0 12px;">&#8592; Back to Home</a>
-  <div class="container">
-    <h1>Projects</h1>
-    <ul>
-      <li>
-        <a class="project-link" href="https://ethan-ragbir.github.io/black-jack/" target="_blank">Blackjack Simulator</a>
-        <div class="desc">
-          A web-based blackjack game with realistic odds, user interface, and custom bet settings. Built as a coding project using HTML, CSS, and JavaScript.
-          <span class="proj-date">July 2025</span>
-        </div>
-      </li>
-    </ul>
+  <div class="fade-in">
+    <a href="index.html" class="back-link">&#8592; Back to Home</a>
+    <div class="container">
+      <h1>Projects</h1>
+      <ul>
+        <li>
+          <a class="project-link" href="https://ethan-ragbir.github.io/black-jack/" target="_blank">Blackjack Simulator</a>
+          <div class="desc">
+            A web-based blackjack game with realistic odds, user interface, and custom bet settings. Built as a coding project using HTML, CSS, and JavaScript.
+            <span class="proj-date">July 2025</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </body>
 </html>
