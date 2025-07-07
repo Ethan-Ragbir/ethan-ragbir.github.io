@@ -11,8 +11,8 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #e2eafc 0%, #eef2f7 100%);
-      color: #161b22;
+      background: linear-gradient(120deg, #181923 0%, #353a5d 60%, #5eb1bf 100%);
+      color: #e8eaf1;
       font-family: 'Inter', Arial, Helvetica, sans-serif;
     }
     .layout {
@@ -26,8 +26,8 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      background: rgba(255,255,255,0.85);
-      box-shadow: 0 4px 22px rgba(40,70,120,0.07);
+      background: rgba(36, 40, 48, 0.96);
+      box-shadow: 0 4px 22px rgba(90,130,180,0.11);
       border-radius: 32px;
       height: fit-content;
       margin: 38px 0;
@@ -37,7 +37,7 @@
     }
     .sidebar a {
       font-weight: 600;
-      color: #3f48cc;
+      color: #93e2ea;
       text-decoration: none;
       letter-spacing: 0.01em;
       font-size: 18px;
@@ -52,20 +52,20 @@
       gap: 8px;
     }
     .sidebar a svg {
-      width: 20px; height: 20px; opacity: 0.85;
+      width: 20px; height: 20px; opacity: 0.84;
     }
     .sidebar a::after {
       content: "";
       position: absolute;
       left: 0; right: 0; bottom: 4px;
       height: 2px;
-      background: linear-gradient(90deg, #3f48cc 0%, #1cb5e0 100%);
+      background: linear-gradient(90deg, #7fd7e6 0%, #5eb1bf 100%);
       width: 0;
       transition: width 0.2s;
     }
     .sidebar a:hover {
-      color: #1cb5e0;
-      background: rgba(99,139,255,0.07);
+      color: #fff;
+      background: rgba(92,177,191,0.14);
     }
     .sidebar a:hover::after {
       width: 100%;
@@ -78,53 +78,68 @@
       min-height: 100vh;
     }
     .main-content {
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 4px 24px rgba(40,70,120,0.09);
-      border-radius: 32px;
-      padding: 40px 32px 48px 32px;
+      background: linear-gradient(120deg, #25294a 50%, #5eb1bf 120%);
+      box-shadow: 0 6px 36px rgba(90,130,180,0.16);
+      border-radius: 36px;
+      padding: 42px 34px 50px 34px;
       max-width: 560px;
       margin: auto;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      border: 2px solid #7fd7e6;
     }
     .main-content img {
       width: 140px;
       height: 140px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 2px 12px rgba(40,70,120,0.08);
+      box-shadow: 0 2px 12px rgba(20,30,44,0.15);
       margin-bottom: 25px;
-      border: 4px solid #e2eafc;
-      background: #dde6f9;
+      border: 4px solid #5eb1bf;
+      background: #22242b;
     }
     .main-content h1 {
       font-size: 2.4rem;
       font-weight: 800;
       margin: 0 0 8px 0;
       letter-spacing: 0.01em;
-      color: #232946;
+      color: #f2f6fc;
     }
     .main-content h2 a {
       font-size: 1.25rem;
-      color: #3f48cc;
+      color: #93e2ea;
       font-weight: 600;
       text-decoration: none;
-      border-bottom: 2px solid #c7d3fa;
+      border-bottom: 2px solid #5eb1bf;
       padding-bottom: 2px;
       transition: border-color 0.18s, color 0.18s;
     }
     .main-content h2 a:hover {
-      color: #1cb5e0;
-      border-bottom: 2px solid #1cb5e0;
+      color: #f1f9ff;
+      border-bottom: 2px solid #f1f9ff;
     }
     .main-content p {
       margin-top: 28px;
       font-size: 1.09rem;
       line-height: 1.7;
-      color: #32334a;
+      color: #caf8ff;
       letter-spacing: 0.01em;
+    }
+    .pixel-cat {
+      position: absolute;
+      top: -40px;
+      left: 24px;
+      cursor: pointer;
+      transition: transform 0.13s;
+      z-index: 5;
+      filter: drop-shadow(0 2px 4px #5eb1bf55);
+      image-rendering: pixelated;
+    }
+    .pixel-cat:active {
+      transform: scale(1.13) rotate(-8deg);
     }
     @media (max-width: 990px) {
       .layout {
@@ -157,6 +172,7 @@
       .main-content {
         padding: 14vw 1vw 14vw 1vw;
       }
+      .pixel-cat { left: 5vw; top: -27px; }
     }
   </style>
 </head>
@@ -165,21 +181,39 @@
     <!-- LEFT SIDEBAR -->
     <nav class="sidebar" aria-label="Primary">
       <a href="https://Ethan-Ragbir.github.io/Contact-Me.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.03 2 1 6.03 1 11c0 2.5 1.24 4.73 3.14 6.16C5.22 17.4 6.28 17 7.37 16.62c.21-.08.43-.14.65-.19a.998.998 0 01.94.25c.59.56 1.33 1.06 2.04 1.06s1.45-.5 2.04-1.06a1.001 1.001 0 01.94-.25c.22.05.44.11.65.19 1.09.38 2.15.78 3.23-.46C17.76 15.73 19 13.5 19 11c0-4.97-4.03-9-9-9z" fill="#3f48cc"/></svg>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.03 2 1 6.03 1 11c0 2.5 1.24 4.73 3.14 6.16C5.22 17.4 6.28 17 7.37 16.62c.21-.08.43-.14.65-.19a.998.998 0 01.94.25c.59.56 1.33 1.06 2.04 1.06s1.45-.5 2.04-1.06a1.001 1.001 0 01.94-.25c.22.05.44.11.65.19 1.09.38 2.15.78 3.23-.46C17.76 15.73 19 13.5 19 11c0-4.97-4.03-9-9-9z" fill="#7fd7e6"/></svg>
         Contact Info
       </a>
       <a href="resume.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h8a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v14h12V6h-2V4H4zm4 9h4v2H8v-2zm0-4h4v2H8V7z" fill="#3f48cc"/></svg>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h8a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v14h12V6h-2V4H4zm4 9h4v2H8v-2zm0-4h4v2H8V7z" fill="#7fd7e6"/></svg>
         Resume (PDF)
       </a>
       <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4.98 3.5C3.33 3.5 2 4.83 2 6.48c0 1.65 1.33 2.98 2.98 2.98s2.98-1.33 2.98-2.98C7.96 4.83 6.63 3.5 4.98 3.5zM2 21h6V9H2v12zm7.5-12h5.08v1.71h.07c.7-1.33 2.41-2.74 4.97-2.74 5.32 0 6.3 3.5 6.3 8.07V21h-6v-6.23c0-1.49-.03-3.41-2.09-3.41-2.09 0-2.41 1.63-2.41 3.31V21h-6V9z" fill="#3f48cc"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4.98 3.5C3.33 3.5 2 4.83 2 6.48c0 1.65 1.33 2.98 2.98 2.98s2.98-1.33 2.98-2.98C7.96 4.83 6.63 3.5 4.98 3.5zM2 21h6V9H2v12zm7.5-12h5.08v1.71h.07c.7-1.33 2.41-2.74 4.97-2.74 5.32 0 6.3 3.5 6.3 8.07V21h-6v-6.23c0-1.49-.03-3.41-2.09-3.41-2.09 0-2.41 1.63-2.41 3.31V21h-6V9z" fill="#7fd7e6"/></svg>
         LinkedIn
       </a>
     </nav>
     <!-- MAIN -->
     <main class="main">
       <div class="main-content">
+        <div class="pixel-cat" id="cat-pixel" title="Click me!">
+          <!-- Simple pixel-art cat SVG (can be replaced with a PNG or different SVG if you like) -->
+          <svg id="cat-face" width="56" height="44" viewBox="0 0 56 44" style="image-rendering:pixelated">
+            <!-- Head -->
+            <rect x="12" y="10" width="32" height="26" rx="7" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+            <!-- Left ear -->
+            <polygon points="13,14 18,2 22,14" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+            <!-- Right ear -->
+            <polygon points="35,14 39,2 43,14" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
+            <!-- Eyes (default) -->
+            <ellipse id="eye-left" cx="22" cy="24" rx="3" ry="5" fill="#fafafa"/>
+            <ellipse id="eye-right" cx="34" cy="24" rx="3" ry="5" fill="#fafafa"/>
+            <ellipse id="pupil-left" cx="22" cy="26" rx="1.1" ry="2" fill="#23222f"/>
+            <ellipse id="pupil-right" cx="34" cy="26" rx="1.1" ry="2" fill="#23222f"/>
+            <!-- Mouth -->
+            <path id="cat-mouth" d="M27 32 Q28 34 29 32" stroke="#fafafa" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
         <img src="your-profile.jpg" alt="Ethan Ragbir">
         <h1>Ethan Ragbir</h1>
         <h2>
@@ -196,18 +230,38 @@
     <!-- RIGHT SIDEBAR -->
     <nav class="sidebar" aria-label="Secondary">
       <a href="cv.pdf" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 20h14a2 2 0 002-2V8.83A2 2 0 0020.83 7l-5.66-5.66A2 2 0 0013.17 1H5a2 2 0 00-2 2v16a2 2 0 002 2zm7-2c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm1-8V3.5L18.5 9H14z" fill="#3f48cc"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 20h14a2 2 0 002-2V8.83A2 2 0 0020.83 7l-5.66-5.66A2 2 0 0013.17 1H5a2 2 0 00-2 2v16a2 2 0 002 2zm7-2c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm1-8V3.5L18.5 9H14z" fill="#7fd7e6"/></svg>
         CV
       </a>
       <a href="research.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11V5h-2v2h2zm0 2v6h-2v-6h2z" fill="#3f48cc"/></svg>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11V5h-2v2h2zm0 2v6h-2v-6h2z" fill="#7fd7e6"/></svg>
         Research
       </a>
       <a href="projects.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm4 3v2h4V5H8zm0 4v2h4V9H8zm0 4v2h4v-2H8z" fill="#3f48cc"/></svg>
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm4 3v2h4V5H8zm0 4v2h4V9H8zm0 4v2h4v-2H8z" fill="#7fd7e6"/></svg>
         Projects
       </a>
     </nav>
   </div>
+  <script>
+    // Cat face interaction
+    const cat = document.getElementById('cat-pixel');
+    let isSmiling = false;
+    cat.addEventListener('click', () => {
+      const mouth = document.getElementById('cat-mouth');
+      const pupilL = document.getElementById('pupil-left');
+      const pupilR = document.getElementById('pupil-right');
+      if (!isSmiling) {
+        mouth.setAttribute('d','M25 31 Q28 37 31 31'); // Big smile
+        pupilL.setAttribute('cy','28');
+        pupilR.setAttribute('cy','28');
+      } else {
+        mouth.setAttribute('d','M27 32 Q28 34 29 32'); // Normal
+        pupilL.setAttribute('cy','26');
+        pupilR.setAttribute('cy','26');
+      }
+      isSmiling = !isSmiling;
+    });
+  </script>
 </body>
 </html>
