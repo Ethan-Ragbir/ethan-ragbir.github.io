@@ -41,12 +41,18 @@
       text-decoration: none;
       letter-spacing: 0.01em;
       font-size: 18px;
-      padding: 8px 0;
+      padding: 8px 0 8px 16px;
       border-radius: 7px;
       position: relative;
       transition: background 0.17s, color 0.17s;
       overflow: hidden;
       background: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar a svg {
+      width: 20px; height: 20px; opacity: 0.85;
     }
     .sidebar a::after {
       content: "";
@@ -158,9 +164,18 @@
   <div class="layout">
     <!-- LEFT SIDEBAR -->
     <nav class="sidebar" aria-label="Primary">
-      <a href="https://Ethan-Ragbir.github.io/Contact-Me.html">Contact Info</a>
-      <a href="resume.html">Resume (PDF)</a>
-      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
+      <a href="https://Ethan-Ragbir.github.io/Contact-Me.html">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.03 2 1 6.03 1 11c0 2.5 1.24 4.73 3.14 6.16C5.22 17.4 6.28 17 7.37 16.62c.21-.08.43-.14.65-.19a.998.998 0 01.94.25c.59.56 1.33 1.06 2.04 1.06s1.45-.5 2.04-1.06a1.001 1.001 0 01.94-.25c.22.05.44.11.65.19 1.09.38 2.15.78 3.23-.46C17.76 15.73 19 13.5 19 11c0-4.97-4.03-9-9-9z" fill="#3f48cc"/></svg>
+        Contact Info
+      </a>
+      <a href="resume.html">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h8a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v14h12V6h-2V4H4zm4 9h4v2H8v-2zm0-4h4v2H8V7z" fill="#3f48cc"/></svg>
+        Resume (PDF)
+      </a>
+      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4.98 3.5C3.33 3.5 2 4.83 2 6.48c0 1.65 1.33 2.98 2.98 2.98s2.98-1.33 2.98-2.98C7.96 4.83 6.63 3.5 4.98 3.5zM2 21h6V9H2v12zm7.5-12h5.08v1.71h.07c.7-1.33 2.41-2.74 4.97-2.74 5.32 0 6.3 3.5 6.3 8.07V21h-6v-6.23c0-1.49-.03-3.41-2.09-3.41-2.09 0-2.41 1.63-2.41 3.31V21h-6V9z" fill="#3f48cc"/></svg>
+        LinkedIn
+      </a>
     </nav>
     <!-- MAIN -->
     <main class="main">
@@ -180,9 +195,18 @@
     </main>
     <!-- RIGHT SIDEBAR -->
     <nav class="sidebar" aria-label="Secondary">
-      <a href="cv.pdf" target="_blank">CV</a>
-      <a href="research.html">Research</a>
-      <a href="projects.html">Projects</a>
+      <a href="cv.pdf" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 20h14a2 2 0 002-2V8.83A2 2 0 0020.83 7l-5.66-5.66A2 2 0 0013.17 1H5a2 2 0 00-2 2v16a2 2 0 002 2zm7-2c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm1-8V3.5L18.5 9H14z" fill="#3f48cc"/></svg>
+        CV
+      </a>
+      <a href="research.html">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11V5h-2v2h2zm0 2v6h-2v-6h2z" fill="#3f48cc"/></svg>
+        Research
+      </a>
+      <a href="projects.html">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm4 3v2h4V5H8zm0 4v2h4V9H8zm0 4v2h4v-2H8z" fill="#3f48cc"/></svg>
+        Projects
+      </a>
     </nav>
   </div>
 </body>
