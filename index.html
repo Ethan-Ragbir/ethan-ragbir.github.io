@@ -3,294 +3,649 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethan Ragbir</title>
+  <title>Ethan Ragbir - Physics & Mathematics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(120deg, #181923 0%, #353a5d 60%, #5eb1bf 100%);
-      color: #e8eaf1;
-      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .layout {
-      display: grid;
-      grid-template-columns: 220px 1fr 220px;
-      min-height: 100vh;
-      gap: 0 24px;
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --bg-tertiary: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --text-muted: #808080;
+      --accent: #4a4a4a;
+      --border: #333333;
+      --shadow: rgba(0, 0, 0, 0.5);
     }
-    .sidebar {
-      padding: 32px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      background: rgba(36, 40, 48, 0.96);
-      box-shadow: 0 4px 22px rgba(90,130,180,0.11);
-      border-radius: 32px;
-      height: fit-content;
-      margin: 38px 0;
-      align-items: flex-start;
-      transition: box-shadow 0.3s;
-      backdrop-filter: blur(2.5px);
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    .sidebar a {
-      font-weight: 600;
-      color: #93e2ea;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      font-size: 18px;
-      padding: 8px 0 8px 16px;
-      border-radius: 7px;
-      position: relative;
-      transition: background 0.17s, color 0.17s;
-      overflow: hidden;
-      background: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .sidebar a svg {
-      width: 20px; height: 20px; opacity: 0.84;
-    }
-    .sidebar a::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: 4px;
-      height: 2px;
-      background: linear-gradient(90deg, #7fd7e6 0%, #5eb1bf 100%);
-      width: 0;
-      transition: width 0.2s;
-    }
-    .sidebar a:hover {
-      color: #fff;
-      background: rgba(92,177,191,0.14);
-    }
-    .sidebar a:hover::after {
-      width: 100%;
-    }
-    .main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 38px 0 38px 0;
-      min-height: 100vh;
-    }
-    .main-content {
-      background: linear-gradient(120deg, #25294a 50%, #5eb1bf 120%);
-      box-shadow: 0 6px 36px rgba(90,130,180,0.16);
-      border-radius: 36px;
-      padding: 42px 34px 50px 34px;
-      max-width: 560px;
-      margin: auto;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      border: 2px solid #7fd7e6;
-    }
-    .main-content img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 2px 12px rgba(20,30,44,0.15);
-      margin-bottom: 25px;
-      border: 4px solid #5eb1bf;
-      background: #22242b;
-    }
-    .main-content h1 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      margin: 0 0 8px 0;
-      letter-spacing: 0.01em;
-      color: #f2f6fc;
-    }
-    .main-content h2 a {
-      font-size: 1.25rem;
-      color: #93e2ea;
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 2px solid #5eb1bf;
-      padding-bottom: 2px;
-      transition: border-color 0.18s, color 0.18s;
-    }
-    .main-content h2 a:hover {
-      color: #f1f9ff;
-      border-bottom: 2px solid #f1f9ff;
-    }
-    .main-content p {
-      margin-top: 28px;
-      font-size: 1.09rem;
-      line-height: 1.7;
-      color: #caf8ff;
-      letter-spacing: 0.01em;
-    }
-    .walking-cat {
+
+    /* Animated background grid */
+    .bg-grid {
       position: fixed;
-      left: 30vw;
-      bottom: 32px;
-      z-index: 1010;
-      width: 78px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.03;
+      z-index: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.98);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-links a:hover::before {
+      left: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 6rem 2rem 2rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .hero-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      background: linear-gradient(45deg, var(--bg-secondary), var(--bg-tertiary));
+      border: 3px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      transition: all 0.5s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .hero-image:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-image:hover::before {
+      opacity: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Interactive Cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border-color: var(--accent);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .card-icon {
+      background: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .fab:hover {
+      background: var(--accent);
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .fab svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--text-primary);
+    }
+
+    /* Interactive Cat */
+    .interactive-cat {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 80px;
       height: 60px;
       cursor: pointer;
-      user-select: none;
-      transition: transform 0.13s;
-      image-rendering: pixelated;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
     }
-    .walking-cat:active {
-      transform: scale(1.15) rotate(-8deg);
+
+    .interactive-cat:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.4));
     }
-    @media (max-width: 990px) {
-      .layout {
+
+    .interactive-cat.walking {
+      animation: catWalk 8s linear infinite;
+    }
+
+    @keyframes catWalk {
+      0% { left: 2rem; }
+      25% { left: calc(50% - 40px); }
+      50% { left: calc(100% - 6rem); transform: scaleX(-1); }
+      75% { left: calc(50% - 40px); }
+      100% { left: 2rem; transform: scaleX(1); }
+    }
+
+    /* Scroll Indicators */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--text-secondary));
+      transition: width 0.1s ease;
+      z-index: 1001;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero {
+        padding: 4rem 1rem 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .cards-container {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 1rem;
       }
-      .sidebar {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 20px auto;
-        width: 90vw;
-        border-radius: 20px;
+      
+      .fab {
+        bottom: 1rem;
+        right: 1rem;
       }
-      .main-content {
-        border-radius: 20px;
-        padding: 30px 10px 38px 10px;
+      
+      .interactive-cat {
+        bottom: 1rem;
+        left: 1rem;
+        width: 60px;
+        height: 45px;
       }
     }
-    @media (max-width: 640px) {
-      .sidebar {
-        padding: 18px 5vw;
-        font-size: 16px;
-        gap: 10px;
-      }
-      .main-content img {
-        width: 95px;
-        height: 95px;
-      }
-      .main-content {
-        padding: 14vw 1vw 14vw 1vw;
-      }
-      .walking-cat {
-        width: 55px; height: 42px;
-        bottom: 10px;
-      }
+
+    /* Loading Animation */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top: 3px solid var(--text-primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <div class="layout">
-    <!-- LEFT SIDEBAR -->
-    <nav class="sidebar" aria-label="Primary">
-      <a href="https://Ethan-Ragbir.github.io/Contact-Me.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.03 2 1 6.03 1 11c0 2.5 1.24 4.73 3.14 6.16C5.22 17.4 6.28 17 7.37 16.62c.21-.08.43-.14.65-.19a.998.998 0 01.94.25c.59.56 1.33 1.06 2.04 1.06s1.45-.5 2.04-1.06a1.001 1.001 0 01.94-.25c.22.05.44.11.65.19 1.09.38 2.15.78 3.23-.46C17.76 15.73 19 13.5 19 11c0-4.97-4.03-9-9-9z" fill="#7fd7e6"/></svg>
-        Contact Info
-      </a>
-      <a href="resume.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h8a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v14h12V6h-2V4H4zm4 9h4v2H8v-2zm0-4h4v2H8V7z" fill="#7fd7e6"/></svg>
-        Resume (PDF)
-      </a>
-      <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4.98 3.5C3.33 3.5 2 4.83 2 6.48c0 1.65 1.33 2.98 2.98 2.98s2.98-1.33 2.98-2.98C7.96 4.83 6.63 3.5 4.98 3.5zM2 21h6V9H2v12zm7.5-12h5.08v1.71h.07c.7-1.33 2.41-2.74 4.97-2.74 5.32 0 6.3 3.5 6.3 8.07V21h-6v-6.23c0-1.49-.03-3.41-2.09-3.41-2.09 0-2.41 1.63-2.41 3.31V21h-6V9z" fill="#7fd7e6"/></svg>
-        LinkedIn
-      </a>
-    </nav>
-    <!-- MAIN -->
-    <main class="main">
-      <div class="main-content">
-        <img src="your-profile.jpg" alt="Ethan Ragbir">
-        <h1>Ethan Ragbir</h1>
-        <h2>
-          <a href="https://tcnj.edu" target="_blank">The College of New Jersey</a>
-        </h2>
-        <p>
-          Hello! My name is Ethan K. Ragbir. I am a physics and Mathematics Student at The College of New Jersey. I mainly spend my time doing undergraduate research at Rutgers University and at my own college. At TCNJ, I research the ice morphology of clouds between
-          -45 to -65° C, and vapor supersaturations of 5 to 100% relative to ice equilibrium. My goal is to publish a paper in geophysics talking about ice crystals and their different phases given various conditions. At Rutgers, my research is with the people over at the High Energy Experimental Particle Physics Lab.
-          We work with lead researchers from CERN to get data from the Compact Muon Solenoid and use machine learning to help analyze data recorded. 
-          
-
-      </div>
-    </main>
-    <!-- RIGHT SIDEBAR -->
-    <nav class="sidebar" aria-label="Secondary">
-      <a href="cv.pdf" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 20h14a2 2 0 002-2V8.83A2 2 0 0020.83 7l-5.66-5.66A2 2 0 0013.17 1H5a2 2 0 00-2 2v16a2 2 0 002 2zm7-2c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm1-8V3.5L18.5 9H14z" fill="#7fd7e6"/></svg>
-        CV
-      </a>
-      <a href="research.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11V5h-2v2h2zm0 2v6h-2v-6h2z" fill="#7fd7e6"/></svg>
-        Research
-      </a>
-      <a href="projects.html">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M4 2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm4 3v2h4V5H8zm0 4v2h4V9H8zm0 4v2h4v-2H8z" fill="#7fd7e6"/></svg>
-        Projects
-      </a>
-    </nav>
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
   </div>
-  <!-- Walking Cat SVG -->
-  <div class="walking-cat" id="walkingCat">
-    <svg id="catSprite" width="78" height="60" viewBox="0 0 78 60" style="image-rendering: pixelated;">
-      <g id="catFrame1">
-        <rect x="18" y="26" width="40" height="20" rx="7" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <rect x="46" y="13" width="19" height="19" rx="6" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <polygon points="48,20 52,6 57,19" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <polygon points="62,19 68,8 66,20" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <ellipse id="cat-eye1-L" cx="56" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
-        <ellipse id="cat-eye1-R" cx="65" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
-        <ellipse id="cat-pupil1-L" cx="56" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
-        <ellipse id="cat-pupil1-R" cx="65" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
-        <path id="cat-mouth1" d="M59 30 Q60.5 32 62 30" stroke="#fafafa" stroke-width="2" fill="none"/>
-        <path d="M20 32 Q4 34 22 52" stroke="#7fd7e6" stroke-width="4" fill="none"/>
-        <rect x="24" y="42" width="6" height="10" rx="3" fill="#7fd7e6"/>
-        <rect x="38" y="43" width="6" height="10" rx="3" fill="#7fd7e6"/>
-      </g>
-      <g id="catFrame2" style="display:none;">
-        <rect x="18" y="26" width="40" height="20" rx="7" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <rect x="46" y="13" width="19" height="19" rx="6" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <polygon points="48,20 52,6 57,19" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <polygon points="62,19 68,8 66,20" fill="#23222f" stroke="#7fd7e6" stroke-width="2"/>
-        <ellipse cx="56" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
-        <ellipse cx="65" cy="24" rx="2.6" ry="4" fill="#fafafa"/>
-        <ellipse id="cat-pupil2-L" cx="56" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
-        <ellipse id="cat-pupil2-R" cx="65" cy="26" rx="1.1" ry="1.8" fill="#23222f"/>
-        <path id="cat-mouth2" d="M59 30 Q60.5 34 62 30" stroke="#fafafa" stroke-width="2" fill="none"/>
-       
-    <rect x="24" y="44" width="6" height="8" rx="3" fill="#7fd7e6"/>
-        <rect x="38" y="42" width="6" height="10" rx="3" fill="#7fd7e6"/>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+
+  <!-- Animated Background -->
+  <div class="bg-grid"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">E.R.</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="https://Ethan-Ragbir.github.io/Contact-Me.html">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-image">
+        <img src="your-profile.jpg" alt="Ethan Ragbir" onerror="this.style.display='none'">
+      </div>
+      <h1>Ethan K. Ragbir</h1>
+      <p class="subtitle">Physics & Mathematics Student</p>
+      <p class="description">
+        Passionate researcher exploring the intersection of atmospheric physics and particle physics. 
+        Currently conducting groundbreaking research on ice morphology at TCNJ and collaborating 
+        with CERN researchers on machine learning applications in high-energy physics at Rutgers University.
+      </p>
+      
+      <div class="cards-container">
+        <div class="card" onclick="window.location.href='research.html'">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.59 0 3.09.41 4.39 1.14"/>
+            </svg>
+          </div>
+          <h3>Research</h3>
+          <p>Ice morphology studies and particle physics analysis using machine learning</p>
+        </div>
+        
+        <div class="card" onclick="window.location.href='projects.html'">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <rect x="7" y="7" width="10" height="10" rx="1" ry="1"/>
+            </svg>
+          </div>
+          <h3>Projects</h3>
+          <p>Academic and personal projects in physics, mathematics, and computational science</p>
+        </div>
+        
+        <div class="card" onclick="window.open('https://www.linkedin.com/in/ethan-ragbir-6032b42a3', '_blank')">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <h3>Connect</h3>
+          <p>Professional networking and collaboration opportunities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Action Button -->
+  <div class="fab" id="fab" title="Scroll to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7 14l5-5 5 5z"/>
+    </svg>
+  </div>
+
+  <!-- Interactive Cat -->
+  <div class="interactive-cat" id="cat" title="Click me!">
+    <svg width="80" height="60" viewBox="0 0 80 60">
+      <g id="catBody">
+        <!-- Cat body -->
+        <ellipse cx="40" cy="40" rx="25" ry="12" fill="#4a4a4a" stroke="#666" stroke-width="2"/>
+        <!-- Cat head -->
+        <circle cx="40" cy="25" r="15" fill="#4a4a4a" stroke="#666" stroke-width="2"/>
+        <!-- Cat ears -->
+        <polygon points="28,15 32,5 36,15" fill="#4a4a4a" stroke="#666" stroke-width="1"/>
+        <polygon points="44,15 48,5 52,15" fill="#4a4a4a" stroke="#666" stroke-width="1"/>
+        <!-- Cat eyes -->
+        <circle cx="35" cy="23" r="3" fill="#e0e0e0"/>
+        <circle cx="45" cy="23" r="3" fill="#e0e0e0"/>
+        <circle cx="35" cy="23" r="1.5" fill="#333"/>
+        <circle cx="45" cy="23" r="1.5" fill="#333"/>
+        <!-- Cat mouth -->
+        <path d="M37 30 Q40 32 43 30" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+        <!-- Cat tail -->
+        <path d="M65 40 Q70 30 68 50" stroke="#666" stroke-width="4" fill="none"/>
+        <!-- Cat legs -->
+        <rect x="28" y="48" width="6" height="10" rx="3" fill="#666"/>
+        <rect x="46" y="48" width="6" height="10" rx="3" fill="#666"/>
       </g>
     </svg>
   </div>
+
   <script>
-    // Walking pixel cat: walks left/right across the bottom
-    let cat = document.getElementById('walkingCat');
-    let frame = 1, pos = window.innerWidth * 0.3, direction = 1;
-    let width = window.innerWidth;
-    function walkCat() {
-      document.getElementById('catFrame1').style.display = frame ? 'block' : 'none';
-      document.getElementById('catFrame2').style.display = frame ? 'none' : 'block';
-      pos += direction * 1.5;
-      if (pos > width-90) { direction = -1; cat.style.transform = 'scaleX(-1)'; }
-      if (pos < 5) { direction = 1; cat.style.transform = 'scaleX(1)'; }
-      cat.style.left = pos + 'px';
-      frame ^= 1;
-      requestAnimationFrame(walkCat);
-    }
-    walkCat();
-    window.addEventListener('resize', () => { width = window.innerWidth; });
-    // On click, make the cat smile (changes both frames)
-    cat.addEventListener('click', () => {
-      let mouth1 = document.getElementById('cat-mouth1');
-      let mouth2 = document.getElementById('cat-mouth2');
-      mouth1.setAttribute('d','M59 30 Q60.5 38 62 30');
-      mouth2.setAttribute('d','M59 30 Q60.5 38 62 30');
+    // Loading Screen
+    window.addEventListener('load', () => {
       setTimeout(() => {
-        mouth1.setAttribute('d','M59 30 Q60.5 32 62 30');
-        mouth2.setAttribute('d','M59 30 Q60.5 34 62 30');
-      }, 900);
+        document.getElementById('loading').classList.add('hidden');
+      }, 1000);
     });
+
+    // Scroll Indicator
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('scrollIndicator').style.width = scrolled + '%';
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Floating Action Button
+    document.getElementById('fab').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Interactive Cat
+    const cat = document.getElementById('cat');
+    let isWalking = false;
+
+    cat.addEventListener('click', () => {
+      if (!isWalking) {
+        isWalking = true;
+        cat.classList.add('walking');
+        
+        // Change cat expression
+        const mouth = cat.querySelector('path[d*="M37 30"]');
+        mouth.setAttribute('d', 'M37 30 Q40 28 43 30');
+        
+        setTimeout(() => {
+          cat.classList.remove('walking');
+          mouth.setAttribute('d', 'M37 30 Q40 32 43 30');
+          isWalking = false;
+        }, 8000);
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Card hover effects with sound simulation
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp' && e.ctrlKey) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Dynamic typing effect for subtitle
+    const subtitle = document.querySelector('.subtitle');
+    const text = 'Physics & Mathematics Student';
+    let index = 0;
+    
+    function typeWriter() {
+      if (index < text.length) {
+        subtitle.textContent = text.slice(0, index + 1);
+        index++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    
+    setTimeout(typeWriter, 1500);
   </script>
 </body>
 </html>
