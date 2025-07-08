@@ -871,3 +871,338 @@
                   <p class="book-author">Aurélien Géron</p>
                   <span class="book-status status-completed">Completed</span>
                 </div>
+              </div>
+              <p class="book-description">
+                Practical guide to machine learning with Python. Excellent balance of theory and hands-on implementation using scikit-learn and TensorFlow.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Python</span>
+                <span class="book-tag">Scikit-learn</span>
+                <span class="book-tag">TensorFlow</span>
+              </div>
+            </div>
+
+            <div class="book-card philosophy" data-category="completed philosophy">
+              <div class="book-header">
+                <div class="book-cover">PHIL</div>
+                <div class="book-info">
+                  <h3 class="book-title">Letters from a Stoic</h3>
+                  <p class="book-author">Seneca</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
+              </div>
+              <p class="book-description">
+                Timeless philosophical insights through personal letters. Seneca's practical wisdom on living a virtuous and meaningful life.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Stoicism</span>
+                <span class="book-tag">Ancient Philosophy</span>
+                <span class="book-tag">Letters</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Want to Read -->
+        <div class="shelf-section want-to-read">
+          <h2 class="shelf-title">
+            <div class="shelf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+            </div>
+            Want to Read
+          </h2>
+          <div class="books-grid">
+            <div class="book-card machine-learning" data-category="want-to-read machine-learning">
+              <div class="book-header">
+                <div class="book-cover">RL</div>
+                <div class="book-info">
+                  <h3 class="book-title">Reinforcement Learning: An Introduction</h3>
+                  <p class="book-author">Richard Sutton, Andrew Barto</p>
+                  <span class="book-status status-want-to-read">Want to Read</span>
+                </div>
+              </div>
+              <p class="book-description">
+                The definitive textbook on reinforcement learning. Essential for understanding how agents learn to make decisions through interaction with environments.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Reinforcement Learning</span>
+                <span class="book-tag">AI</span>
+                <span class="book-tag">Decision Making</span>
+              </div>
+            </div>
+
+            <div class="book-card philosophy" data-category="want-to-read philosophy">
+              <div class="book-header">
+                <div class="book-cover">PHIL</div>
+                <div class="book-info">
+                  <h3 class="book-title">Discourses and Selected Writings</h3>
+                  <p class="book-author">Epictetus</p>
+                  <span class="book-status status-want-to-read">Want to Read</span>
+                </div>
+              </div>
+              <p class="book-description">
+                Core teachings of one of the greatest Stoic philosophers. Practical wisdom on freedom, virtue, and living according to nature.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Stoicism</span>
+                <span class="book-tag">Ancient Philosophy</span>
+                <span class="book-tag">Ethics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote Section -->
+      <div class="quote-section">
+        <h3 class="quote-title">Current Inspiration</h3>
+        <blockquote class="quote">
+          "The best way to find out if you can trust somebody is to trust them."
+        </blockquote>
+        <p class="quote-author">— Ernest Hemingway</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
+      }, 1000);
+    });
+
+    // Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const bookCards = document.querySelectorAll('.book-card');
+    const shelfSections = document.querySelectorAll('.shelf-section');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        // Show/hide shelf sections based on filter
+        shelfSections.forEach(section => {
+          if (filter === 'all') {
+            section.style.display = 'block';
+          } else if (section.classList.contains(filter)) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+
+        // Filter individual books
+        bookCards.forEach(card => {
+          const categories = card.getAttribute('data-category');
+          
+          if (filter === 'all' || categories.includes(filter)) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.5s ease-out';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Update stats
+        updateStats(filter);
+      });
+    });
+
+    // Update Statistics
+    function updateStats(filter) {
+      const visibleCards = Array.from(bookCards).filter(card => {
+        const categories = card.getAttribute('data-category');
+        return filter === 'all' || categories.includes(filter);
+      });
+
+      const currentlyReading = visibleCards.filter(card => 
+        card.querySelector('.status-reading')).length;
+      
+      const completed = visibleCards.filter(card => 
+        card.querySelector('.status-completed')).length;
+      
+      const wantToRead = visibleCards.filter(card => 
+        card.querySelector('.status-want-to-read')).length;
+
+      // Animate number changes
+      animateNumber('totalBooks', visibleCards.length);
+      animateNumber('currentlyReading', currentlyReading);
+      animateNumber('completed', completed);
+      animateNumber('wantToRead', wantToRead);
+    }
+
+    // Animate number changes
+    function animateNumber(elementId, targetNumber) {
+      const element = document.getElementById(elementId);
+      const currentNumber = parseInt(element.textContent);
+      const increment = targetNumber > currentNumber ? 1 : -1;
+      let current = currentNumber;
+
+      const timer = setInterval(() => {
+        current += increment;
+        element.textContent = current;
+        
+        if (current === targetNumber) {
+          clearInterval(timer);
+        }
+      }, 50);
+    }
+
+    // Book card interactions
+    bookCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.querySelector('.book-title').textContent;
+        const author = card.querySelector('.book-author').textContent;
+        showNotification(`📚 "${title}" by ${author}`);
+      });
+    });
+
+    // Notification system
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        max-width: 300px;
+      `;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out forwards';
+        setTimeout(() => notification.remove(), 300);
+      }, 3000);
+    }
+
+    // Add slide animations to CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Random quote rotation
+    const quotes = [
+      {
+        text: "The best way to find out if you can trust somebody is to trust them.",
+        author: "Ernest Hemingway"
+      },
+      {
+        text: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+      },
+      {
+        text: "It is during our darkest moments that we must focus to see the light.",
+        author: "Aristotle"
+      },
+      {
+        text: "You have power over your mind - not outside events. Realize this, and you will find strength.",
+        author: "Marcus Aurelius"
+      },
+      {
+        text: "The function of education is to teach one to think intensively and to think critically.",
+        author: "Martin Luther King Jr."
+      }
+    ];
+
+    function rotateQuote() {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      const quoteElement = document.querySelector('.quote');
+      const authorElement = document.querySelector('.quote-author');
+      
+      quoteElement.style.opacity = '0';
+      authorElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        quoteElement.textContent = `"${randomQuote.text}"`;
+        authorElement.textContent = `— ${randomQuote.author}`;
+        quoteElement.style.opacity = '1';
+        authorElement.style.opacity = '1';
+      }, 300);
+    }
+
+    // Rotate quote every 10 seconds
+    setInterval(rotateQuote, 10000);
+
+    // Enhanced hover effects for books
+    bookCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+        
+        // Animate progress bar if it exists
+        const progressFill = card.querySelector('.progress-fill');
+        if (progressFill) {
+          const width = progressFill.style.width;
+          progressFill.style.width = '0%';
+          setTimeout(() => {
+            progressFill.style.width = width;
+          }, 100);
+        }
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.location.href = 'index.html';
+      }
+      if (e.key === 'r' && e.ctrlKey) {
+        e.preventDefault();
+        rotateQuote();
+      }
+    });
+
+    // Initialize with scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all book cards
+    document.querySelectorAll('.book-card, .stat-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
