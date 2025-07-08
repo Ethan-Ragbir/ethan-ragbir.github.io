@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookshelf - Ethan Ragbir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --bg-tertiary: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --text-muted: #808080;
+      --accent: #4a4a4a;
+      --border: #333333;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --info: #60a5fa;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --orange: #f97316;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.03;
+      z-index: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridMove 15s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(40px, 40px); }
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .back-btn {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      transform: translateX(-4px);
+    }
+
+    /* Main Content */
+    .main {
+      min-height: 100vh;
+      padding: 6rem 2rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .main-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Reading Stats */
+    .reading-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .filter-btn:hover::before {
+      left: 100%;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: var(--text-primary);
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    /* Bookshelf */
+    .bookshelf {
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .shelf-section {
+      margin-bottom: 4rem;
+    }
+
+    .shelf-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .shelf-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-tertiary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .currently-reading .shelf-icon {
+      background: var(--success);
+    }
+
+    .completed .shelf-icon {
+      background: var(--info);
+    }
+
+    .want-to-read .shelf-icon {
+      background: var(--warning);
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .book-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .book-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .book-card:hover::before {
+      opacity: 1;
+    }
+
+    .book-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border-color: var(--accent);
+    }
+
+    .book-header {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .book-cover {
+      width: 60px;
+      height: 80px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--bg-tertiary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      text-align: center;
+      padding: 0.25rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .book-card:hover .book-cover::after {
+      opacity: 1;
+    }
+
+    .machine-learning .book-cover {
+      background: linear-gradient(135deg, var(--info), var(--purple));
+    }
+
+    .philosophy .book-cover {
+      background: linear-gradient(135deg, var(--warning), var(--orange));
+    }
+
+    .physics .book-cover {
+      background: linear-gradient(135deg, var(--success), var(--info));
+    }
+
+    .book-info {
+      flex: 1;
+    }
+
+    .book-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .book-author {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-status {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-reading {
+      background: rgba(74, 222, 128, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .status-completed {
+      background: rgba(96, 165, 250, 0.2);
+      color: var(--info);
+      border: 1px solid var(--info);
+    }
+
+    .status-want-to-read {
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+
+    .book-description {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
+
+    .book-progress {
+      margin-top: 1rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-tertiary);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--success), var(--info));
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .book-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .book-tag {
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .book-card:hover .book-tag {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-primary);
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-top: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      animation: shimmer 4s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .quote-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .quote {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .quote-author {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Loading Animation */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top: 3px solid var(--text-primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      .main {
+        padding: 4rem 1rem 2rem;
+      }
+
+      .main-title {
+        font-size: 2.5rem;
+      }
+
+      .books-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .reading-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .filter-controls {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Animated Background -->
+  <div class="bg-grid"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">E.R.</a>
+      <a href="index.html" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5"/>
+          <path d="M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1 class="main-title">Bookshelf</h1>
+        <p class="subtitle">A curated collection of knowledge and inspiration</p>
+      </div>
+
+      <!-- Reading Stats -->
+      <div class="reading-stats">
+        <div class="stat-card">
+          <span class="stat-number" id="totalBooks">12</span>
+          <span class="stat-label">Total Books</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="currentlyReading">3</span>
+          <span class="stat-label">Currently Reading</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="completed">7</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="wantToRead">2</span>
+          <span class="stat-label">Want to Read</span>
+        </div>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">All Books</button>
+        <button class="filter-btn" data-filter="currently-reading">Currently Reading</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+        <button class="filter-btn" data-filter="philosophy">Philosophy</button>
+        <button class="filter-btn" data-filter="physics">Physics</button>
+      </div>
+
+      <!-- Bookshelf -->
+      <div class="bookshelf">
+        <!-- Currently Reading -->
+        <div class="shelf-section currently-reading">
+          <h2 class="shelf-title">
+            <div class="shelf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+            Currently Reading
+          </h2>
+          <div class="books-grid">
+            <div class="book-card machine-learning" data-category="currently-reading machine-learning">
+              <div class="book-header">
+                <div class="book-cover">ML</div>
+                <div class="book-info">
+                  <h3 class="book-title">The Elements of Statistical Learning</h3>
+                  <p class="book-author">Trevor Hastie, Robert Tibshirani, Jerome Friedman</p>
+                  <span class="book-status status-reading">Reading</span>
+                </div>
+              </div>
+              <div class="book-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%;"></div>
+                </div>
+                <p class="progress-text">Chapter 7 of 18 (65%)</p>
+              </div>
+              <p class="book-description">
+                Comprehensive guide to machine learning and statistical learning theory. Essential reading for understanding the mathematical foundations of modern ML algorithms.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Statistics</span>
+                <span class="book-tag">Machine Learning</span>
+                <span class="book-tag">Data Science</span>
+              </div>
+            </div>
+
+            <div class="book-card philosophy" data-category="currently-reading philosophy">
+              <div class="book-header">
+                <div class="book-cover">PHIL</div>
+                <div class="book-info">
+                  <h3 class="book-title">Meditations</h3>
+                  <p class="book-author">Marcus Aurelius</p>
+                  <span class="book-status status-reading">Reading</span>
+                </div>
+              </div>
+              <div class="book-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 40%;"></div>
+                </div>
+                <p class="progress-text">Book 3 of 12 (40%)</p>
+              </div>
+              <p class="book-description">
+                Timeless philosophical reflections on duty, mortality, and virtue from the Roman Emperor. A masterpiece of Stoic philosophy that remains relevant today.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Stoicism</span>
+                <span class="book-tag">Philosophy</span>
+                <span class="book-tag">Ancient Wisdom</span>
+              </div>
+            </div>
+
+            <div class="book-card physics" data-category="currently-reading physics">
+              <div class="book-header">
+                <div class="book-cover">QM</div>
+                <div class="book-info">
+                  <h3 class="book-title">Quantum Mechanics: Concepts and Applications</h3>
+                  <p class="book-author">Nouredine Zettili</p>
+                  <span class="book-status status-reading">Reading</span>
+                </div>
+              </div>
+              <div class="book-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 55%;"></div>
+                </div>
+                <p class="progress-text">Chapter 8 of 14 (55%)</p>
+              </div>
+              <p class="book-description">
+                Comprehensive textbook covering quantum mechanics from basic principles to advanced applications. Essential for understanding modern physics research.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Quantum Physics</span>
+                <span class="book-tag">Theoretical Physics</span>
+                <span class="book-tag">Mathematics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed -->
+        <div class="shelf-section completed">
+          <h2 class="shelf-title">
+            <div class="shelf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.59 0 3.09.41 4.39 1.14"/>
+              </svg>
+            </div>
+            Completed
+          </h2>
+          <div class="books-grid">
+            <div class="book-card machine-learning" data-category="completed machine-learning">
+              <div class="book-header">
+                <div class="book-cover">ML</div>
+                <div class="book-info">
+                  <h3 class="book-title">Pattern Recognition and Machine Learning</h3>
+                  <p class="book-author">Christopher Bishop</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
+              </div>
+              <p class="book-description">
+                Excellent introduction to machine learning with a strong mathematical foundation. Covers both supervised and unsupervised learning methods.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Machine Learning</span>
+                <span class="book-tag">Pattern Recognition</span>
+                <span class="book-tag">Bayesian Methods</span>
+              </div>
+            </div>
+
+            <div class="book-card philosophy" data-category="completed philosophy">
+              <div class="book-header">
+                <div class="book-cover">PHIL</div>
+                <div class="book-info">
+                  <h3 class="book-title">Thinking, Fast and Slow</h3>
+                  <p class="book-author">Daniel Kahneman</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
+              </div>
+              <p class="book-description">
+                Groundbreaking exploration of human decision-making and cognitive biases. Essential reading for understanding how the mind works and makes choices.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Psychology</span>
+                <span class="book-tag">Behavioral Economics</span>
+                <span class="book-tag">Decision Making</span>
+              </div>
+            </div>
+
+            <div class="book-card machine-learning" data-category="completed machine-learning">
+              <div class="book-header">
+                <div class="book-cover">DL</div>
+                <div class="book-info">
+                  <h3 class="book-title">Deep Learning</h3>
+                  <p class="book-author">Ian Goodfellow, Yoshua Bengio, Aaron Courville</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
+              </div>
+              <p class="book-description">
+                The definitive textbook on deep learning. Comprehensive coverage from fundamentals to cutting-edge research in neural networks.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Deep Learning</span>
+                <span class="book-tag">Neural Networks</span>
+                <span class="book-tag">AI</span>
+              </div>
+            </div>
+
+            <div class="book-card philosophy" data-category="completed philosophy">
+              <div class="book-header">
+                <div class="book-cover">PHIL</div>
+                <div class="book-info">
+                  <h3 class="book-title">The Stoic Challenge</h3>
+                  <p class="book-author">William Irvine</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
+              </div>
+              <p class="book-description">
+                Modern application of ancient Stoic philosophy to contemporary challenges. Practical wisdom for resilience and personal growth.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Stoicism</span>
+                <span class="book-tag">Self-Help</span>
+                <span class="book-tag">Philosophy</span>
+              </div>
+            </div>
+
+            <div class="book-card physics" data-category="completed physics">
+              <div class="book-header">
+                <div class="book-cover">PHYS</div>
+                <div class="book-info">
+                  <h3 class="book-title">Introduction to Elementary Particles</h3>
+                  <p class="book-author">David Griffiths</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
+              </div>
+              <p class="book-description">
+                Clear and accessible introduction to particle physics. Perfect foundation for understanding the Standard Model and current research.
+              </p>
+              <div class="book-tags">
+                <span class="book-tag">Particle Physics</span>
+                <span class="book-tag">Standard Model</span>
+                <span class="book-tag">CERN</span>
+              </div>
+            </div>
+
+            <div class="book-card machine-learning" data-category="completed machine-learning">
+              <div class="book-header">
+                <div class="book-cover">ML</div>
+                <div class="book-info">
+                  <h3 class="book-title">Hands-On Machine Learning</h3>
+                  <p class="book-author">Aurélien Géron</p>
+                  <span class="book-status status-completed">Completed</span>
+                </div>
