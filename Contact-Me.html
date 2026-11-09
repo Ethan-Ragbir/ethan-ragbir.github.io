@@ -1,102 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Get in touch with Ethan Ragbir by email or connect on LinkedIn and GitHub.">
   <title>Contact | Ethan Ragbir</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', Arial, Helvetica, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(120deg, #181923 0%, #353a5d 60%, #5eb1bf 100%);
-      color: #e8eaf1;
-      transition: background 0.6s cubic-bezier(.7,0,.3,1);
-      overflow-x: hidden;
-    }
-    .fade-in {
-      opacity: 0;
-      animation: fadein 0.7s cubic-bezier(.7,0,.3,1) 0.1s forwards;
-    }
-    @keyframes fadein {
-      to { opacity: 1; }
-    }
-    .back {
-      margin-bottom: 34px;
-      margin-top: 26px;
-      margin-left: 12px;
-    }
-    .back a {
-      color: #7fd7e6;
-      font-weight: 600;
-      font-size: 18px;
-      text-decoration: none;
-      transition: color 0.19s;
-    }
-    .back a:hover {
-      color: #f2f6fc;
-      text-decoration: underline;
-    }
-    .card {
-      max-width: 480px;
-      margin: 44px auto 0 auto;
-      background: rgba(34,37,44,0.94);
-      border-radius: 30px;
-      box-shadow: 0 6px 36px rgba(90,130,180,0.14);
-      padding: 42px 34px 42px 34px;
-      border: 2px solid #7fd7e6;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 28px;
-      color: #caf8ff;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-align: center;
-    }
-    .info {
-      font-size: 19px;
-      line-height: 1.78;
-      color: #e8eaf1;
-    }
-    .info a {
-      color: #7fd7e6;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.18s;
-    }
-    .info a:hover {
-      color: #caf8ff;
-      text-decoration: underline;
-    }
-    .info strong {
-      color: #caf8ff;
-    }
-    @media (max-width: 650px) {
-      .card {
-        padding: 22px 7vw 22px 7vw;
-        border-radius: 17px;
-      }
-      h1 { font-size: 1.6rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <div class="fade-in">
-    <div class="back"><a href="index.html">&larr; Back to Home</a></div>
-    <div class="card">
-      <h1>Contact Information</h1>
-      <div class="info">
-        <p><strong>Personal Email:</strong> <a href="mailto:ethanragbir@EthanRagbir.com">ethanragbir@EthanRagbir.com</a></p>
-        <p><strong>University Email:</strong> <a href="mailto:ragbire1@tcnj.edu">ragbire1@tcnj.edu</a></p>
-        <p><strong>Phone:</strong> (718)-607-6955</p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">linkedin.com/in/ethan-ragbir</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/Ethan-Ragbir" target="_blank">github.com/Ethan-Ragbir</a></p>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="site-name" href="index.html">Ethan Ragbir</a>
+      <nav aria-label="Main navigation">
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="bookshelf.html">Bookshelf</a>
+        <a href="resume.html">CV</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <div class="page-intro">
+        <h1>Contact</h1>
+        <p class="lede">The best way to reach me is by email.</p>
       </div>
-    </div>
+
+      <section class="content-section" aria-labelledby="email-title">
+        <h2 id="email-title">Email &amp; phone</h2>
+        <dl class="contact-list">
+          <dt>University</dt>
+          <dd><a href="mailto:ragbire1@tcnj.edu">ragbire1@tcnj.edu</a></dd>
+          <dt>Personal</dt>
+          <dd><a href="mailto:ethanragbir@EthanRagbir.com">ethanragbir@EthanRagbir.com</a></dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+17186076955">(718) 607-6955</a></dd>
+        </dl>
+      </section>
+
+      <section class="content-section" aria-labelledby="elsewhere-title">
+        <h2 id="elsewhere-title">Elsewhere</h2>
+        <dl class="contact-list">
+          <dt>LinkedIn</dt>
+          <dd><a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3">ethan-ragbir <span aria-hidden="true">↗</span></a></dd>
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/Ethan-Ragbir">Ethan-Ragbir <span aria-hidden="true">↗</span></a></dd>
+          <dt>ORCID</dt>
+          <dd><a href="https://orcid.org/0009-0001-8796-5088">0009-0001-8796-5088 <span aria-hidden="true">↗</span></a></dd>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Ethan Ragbir</span>
+      <a href="Contact-Me.html" aria-current="page">Contact</a>
+    </footer>
   </div>
 </body>
 </html>

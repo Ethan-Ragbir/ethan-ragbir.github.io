@@ -1,360 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethan Ragbir - Resume</title>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #000;
-      padding: 20px;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    .header h1 {
-      font-size: 32px;
-      margin: 0 0 10px;
-    }
-    
-    .nav-links {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    .nav-links a {
-      margin: 0 15px;
-      color: #0645ad;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
-    
-    .resume-container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    
-    .resume-header {
-      background: #333;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .resume-header h2 {
-      margin: 0;
-      font-size: 20px;
-    }
-    
-    .download-btn {
-      background: #0645ad;
-      color: white;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-    
-    .download-btn:hover {
-      background: #0534a0;
-    }
-    
-    .resume-content {
-      padding: 30px;
-      background: white;
-      line-height: 1.6;
-    }
-    
-    .resume-section {
-      margin-bottom: 30px;
-    }
-    
-    .resume-section h3 {
-      color: #333;
-      font-size: 18px;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #0645ad;
-      padding-bottom: 5px;
-    }
-    
-    .contact-info {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 14px;
-    }
-    
-    .job-entry, .education-entry, .project-entry {
-      margin-bottom: 20px;
-    }
-    
-    .job-title, .degree-title, .project-title {
-      font-weight: bold;
-      color: #333;
-    }
-    
-    .job-company, .school-name {
-      font-style: italic;
-      color: #666;
-    }
-    
-    .job-dates, .school-dates {
-      float: right;
-      color: #666;
-      font-size: 14px;
-    }
-    
-    .job-description, .project-description {
-      margin-top: 8px;
-      margin-left: 20px;
-    }
-    
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    
-    .skill-tag {
-      background: #e8f4f8;
-      color: #0645ad;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-    
-    .clearfix::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-    
-    @media (max-width: 768px) {
-      .job-dates, .school-dates {
-        float: none;
-        display: block;
-      }
-      
-      .resume-header {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ethan Ragbir’s education, research experience, projects, and academic activities.">
+  <title>CV | Ethan Ragbir</title>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <div class="header">
-    <h1>Resume - Ethan Ragbir</h1>
-  </div>
-  
-  <div class="nav-links">
-    <a href="index.html">← Back to Home</a>
-    <a href="https://Ethan-Ragbir.github.io/Contact-Me.html">Contact Info</a>
-    <a href="https://www.linkedin.com/in/ethan-ragbir-6032b42a3" target="_blank">LinkedIn</a>
-  </div>
-  
-  <div class="resume-container">
-    <div class="resume-header">
-      <h2>Professional Resume</h2>
-      <a href="resume.pdf" class="download-btn" download>Download PDF</a>
-    </div>
-    
-    <div class="resume-content">
-      <div class="contact-info">
-        <strong>Ethan Ragbir</strong><br>
-        ragbire1@tcnj.edu | (718) 607-6955 | linkedin.com/in/ethan-ragbir-6032b42a3 | github.com/Ethan-Ragbir
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="site-name" href="index.html">Ethan Ragbir</a>
+      <nav aria-label="Main navigation">
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="bookshelf.html">Bookshelf</a>
+        <a href="resume.html" aria-current="page">CV</a>
+      </nav>
+    </header>
+    <main id="main-content">
+      <div class="page-intro">
+        <h1>Curriculum vitae</h1>
+        <p class="lede">Education, research, and experience.</p>
+        <a class="text-link" href="Ethan_Ragbir_resume.pdf" download>Download CV (PDF) <span aria-hidden="true">↗</span></a>
       </div>
-      
-      <div class="resume-section">
-        <h3>Education</h3>
-        <div class="education-entry clearfix">
-          <div class="school-dates">Expected Graduation: 2028</div>
-          <div class="degree-title">B.S. in Mathematics and Physics</div>
-          <div class="school-name">The College of New Jersey (TCNJ)</div>
-          <div class="job-description">
-            <strong>Advisors:</strong> Thulsi Wickramsinghe (Physics), Qifu Zheng (Mathematics)<br>
-            <strong>Relevant Coursework:</strong> Classical Mechanics, Electromagnetism, Quantum Physics, Multivariable Calculus, Differential Equations
-          </div>
+      <section class="content-section" aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <div class="entry-list">
+          <article class="entry">
+            <h3>B.S. in Mathematics and Physics</h3>
+            <p class="meta">The College of New Jersey · Expected graduation 2028</p>
+            <p>Advisors: Thulsi Wickramsinghe (Physics) and Qifu Zheng (Mathematics).<br>Coursework: Classical Mechanics, Electromagnetism, Quantum Physics, Multivariable Calculus, and Differential Equations.</p>
+          </article>
         </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>Experience</h3>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Jun 2025 – Present</div>
-          <div class="job-title">Undergraduate Researcher</div>
-          <div class="job-company">CERN, Compact Muon Solenoid (CMS) Experiment</div>
-          <div class="job-description">
-            Developing a neural-network-based machine learning algorithm to analyze CMS detector data. Enhancing supersymmetry search capabilities beyond 275 GeV. Collaborating with the Rutgers High Energy eXperiment (HEX) group to establish a research team at TCNJ.<br>
-            <strong>Skills:</strong> Particle Physics, Deep Learning, ROOT
-          </div>
+      </section>
+      <section class="content-section" aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
+        <div class="entry-list">
+          <article class="entry">
+            <h3>Undergraduate Researcher</h3>
+            <p class="meta">CERN, Compact Muon Solenoid (CMS) Experiment · Jun 2025–Present</p>
+            <p>Developing neural networks to analyze CMS detector data and support supersymmetry searches beyond 275 GeV. Collaborating with the Rutgers High Energy eXperiment (HEX) group to establish a research team at TCNJ.<br>Focus: particle physics, deep learning, and ROOT.</p>
+          </article>
+          <article class="entry">
+            <h3>Undergraduate Researcher</h3>
+            <p class="meta">The College of New Jersey · Apr 2025–Present</p>
+            <p>Studying ice crystal morphology using scanning electron microscopy (SEM) under Dr. Nate Magee. Investigating behavior in extreme environments to improve climate modeling.<br>Focus: SEM, image analysis, and climate physics.</p>
+          </article>
+          <article class="entry">
+            <h3>Research Intern</h3>
+            <p class="meta">General Dynamics · Apr 2025–Present</p>
+            <p>Applied machine learning and retrieval-augmented generation (RAG) to jet propulsion dynamics. Integrated real-world datasets with physical models to improve system performance.<br>Focus: machine learning and computational modeling.</p>
+          </article>
+          <article class="entry">
+            <h3>Machine Learning Engineer Intern</h3>
+            <p class="meta">Startup (under NDA) · Jan–May 2025</p>
+            <p>Contributed to large language model and natural language processing systems. Supported model training and deployment pipelines.<br>Focus: natural language processing, Python, and production machine learning.</p>
+          </article>
+          <article class="entry">
+            <h3>Software Engineer Intern</h3>
+            <p class="meta">New Jersey Institute of Technology · Apr–Dec 2023</p>
+            <p>Maintained backend systems, contributed to scalable application development, and built RESTful APIs under faculty supervision.<br>Focus: software engineering, Python, and Git.</p>
+          </article>
         </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Apr 2025 – Present</div>
-          <div class="job-title">Undergraduate Researcher</div>
-          <div class="job-company">The College of New Jersey</div>
-          <div class="job-description">
-            Studying ice crystal morphology using scanning electron microscopy (SEM) under Dr. Nate Magee. Investigating behavior in extreme environments to improve climate modeling.<br>
-            <strong>Skills:</strong> SEM, Image Analysis, Climate Physics
-          </div>
+      </section>
+      <section class="content-section" aria-labelledby="technical-skills">
+        <h2 id="technical-skills">Technical skills</h2>
+        <div class="section-body">
+          <p><strong>Languages:</strong> Python, C++, Java, MATLAB, LaTeX.</p>
+          <p><strong>Tools and libraries:</strong> Git, TensorFlow, PyTorch, CERN ROOT, OpenCV, LangChain, VS Code, Firebase, PostgreSQL, Linux, Bash, Docker, Conda, Jupyter, Pandas, NumPy.</p>
         </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Apr 2025 – Present</div>
-          <div class="job-title">Research Intern</div>
-          <div class="job-company">General Dynamics</div>
-          <div class="job-description">
-            Applied machine learning and retrieval-augmented generation (RAG) to optimize jet propulsion dynamics. Integrated real-world datasets with physical models to improve system performance.<br>
-            <strong>Skills:</strong> Machine Learning, Computational Modeling
-          </div>
+      </section>
+      <section class="content-section" aria-labelledby="projects">
+        <h2 id="projects">Projects</h2>
+        <div class="entry-list">
+          <article class="entry">
+            <h3>Particle Detection with Neural Networks</h3>
+            <p class="meta">CERN · 2025</p>
+            <p>Built a classifier to identify particle interactions in CMS detector data, combining CERN ROOT preprocessing with TensorFlow training workflows.</p>
+          </article>
+          <article class="entry">
+            <h3>Geophysical Ice Imaging Toolkit</h3>
+            <p class="meta">TCNJ · 2025</p>
+            <p>Automated extraction of ice crystal morphology features from SEM images. Developed a batch-processing pipeline to support climate model research.</p>
+          </article>
+          <article class="entry">
+            <h3>Monte Carlo Jet Propulsion Simulator</h3>
+            <p class="meta">General Dynamics · 2025</p>
+            <p>Simulated jet propulsion dynamics with Monte Carlo methods and applied physics-informed machine learning to analyze flow stability.</p>
+          </article>
         </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Jan 2025 – May 2025</div>
-          <div class="job-title">Machine Learning Engineer Intern</div>
-          <div class="job-company">Startup (Signed NDA)</div>
-          <div class="job-description">
-            Contributed to large language model (LLM) NLP systems under non-disclosure agreement. Supported model training and deployment pipelines.<br>
-            <strong>Skills:</strong> Natural Language Processing, Python, Production ML
-          </div>
+      </section>
+      <section class="content-section" aria-labelledby="activities">
+        <h2 id="activities">Activities</h2>
+        <div class="entry-list">
+          <article class="entry">
+            <h3>Putnam Competition Team</h3>
+            <p class="meta">The College of New Jersey · Since Fall 2024</p>
+            <p>Compete in the William Lowell Putnam Mathematical Competition and train in advanced mathematical problem solving.</p>
+          </article>
+          <article class="entry">
+            <h3>Mathematical Olympiad Prep Team</h3>
+            <p class="meta">Franklin High School · Fall 2022–Jun 2024</p>
+            <p>Studied number theory, combinatorics, and geometry in weekly sessions for national mathematical competitions.</p>
+          </article>
+          <article class="entry">
+            <h3>Chess Club</h3>
+            <p class="meta">The College of New Jersey · Since Fall 2024</p>
+            <p>Participate in weekly tournaments and rated practice, with study of classical openings and tactics.</p>
+          </article>
+          <article class="entry">
+            <h3>Physics Club, Chairman of the Board</h3>
+            <p class="meta">The College of New Jersey · Since Fall 2024</p>
+            <p>Coordinate volunteers, recruitment, and leadership development for club outreach, events, and projects.</p>
+          </article>
         </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Apr 2023 – Dec 2023</div>
-          <div class="job-title">Software Engineer Intern</div>
-          <div class="job-company">New Jersey Institute of Technology (NJIT)</div>
-          <div class="job-description">
-            Maintained backend systems and contributed to scalable application development. Built RESTful APIs under faculty supervision.<br>
-            <strong>Skills:</strong> Software Engineering, Python, Git
-          </div>
+      </section>
+      <section class="content-section" aria-labelledby="volunteer-experience">
+        <h2 id="volunteer-experience">Volunteer experience</h2>
+        <div class="entry-list">
+          <article class="entry">
+            <h3>Bonner Community Scholar</h3>
+            <p class="meta">The College of New Jersey · Aug 2024–Present</p>
+            <p>Complete more than 300 community service hours each academic year through public service projects, civic engagement, and social justice education.</p>
+          </article>
+          <article class="entry">
+            <h3>Red Cross Volunteer Representative</h3>
+            <p class="meta">American Red Cross · 2024–Present</p>
+            <p>Serve as a youth representative for disaster relief coordination and public outreach campaigns.</p>
+          </article>
         </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>Technical Skills</h3>
-        <div class="job-description">
-          <strong>Languages:</strong> Python, C++, Java, MATLAB, LaTeX<br>
-          <strong>Tools / Libraries:</strong> Git, TensorFlow, PyTorch, CERN ROOT, OpenCV, LangChain, VS Code, Firebase, PostgreSQL, Linux, Bash, Docker, Conda, Jupyter, Pandas, NumPy
+      </section>
+      <section class="content-section" aria-labelledby="professional-memberships">
+        <h2 id="professional-memberships">Professional memberships</h2>
+        <div class="entry-list">
+          <article class="entry">
+            <h3>Institute of Electrical and Electronics Engineers (IEEE)</h3>
+            <p class="meta">Feb 2025–Present</p>
+            <p>Member.</p>
+          </article>
+          <article class="entry">
+            <h3>American Physical Society (APS)</h3>
+            <p class="meta">2025–Present</p>
+            <p>Member.</p>
+          </article>
+          <article class="entry">
+            <h3>Society for Industrial and Applied Mathematics (SIAM)</h3>
+            <p class="meta">2025–Present</p>
+            <p>Member.</p>
+          </article>
         </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>Projects</h3>
-        
-        <div class="project-entry">
-          <div class="project-title">Particle Detection with Neural Networks</div>
-          <div class="job-company">CERN, 2025</div>
-          <div class="project-description">
-            Built a classifier to identify particle interactions in CMS detector data. Integrated CERN ROOT preprocessing and TensorFlow training workflows.
-          </div>
-        </div>
-        
-        <div class="project-entry">
-          <div class="project-title">Geophysical Ice Imaging Toolkit</div>
-          <div class="job-company">TCNJ, 2025</div>
-          <div class="project-description">
-            Automated extraction of morphological features of ice crystals using SEM. Developed batch-processing pipeline to support climate model research.
-          </div>
-        </div>
-        
-        <div class="project-entry">
-          <div class="project-title">Monte Carlo Jet Propulsion Simulator</div>
-          <div class="job-company">General Dynamics, 2025</div>
-          <div class="project-description">
-            Simulated jet propulsion dynamics with Monte Carlo methods. Integrated physics-informed ML to analyze flow stability.
-          </div>
-        </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>Extracurricular Activities</h3>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Since Fall 2024</div>
-          <div class="job-title">Putnam Competition Team</div>
-          <div class="job-company">The College of New Jersey</div>
-          <div class="job-description">
-            Compete in the William Lowell Putnam Mathematical Competition with intensive problem-solving training in advanced mathematics.
-          </div>
-        </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Fall 2022 - June 2024</div>
-          <div class="job-title">Mathematical Olympiad Prep Team</div>
-          <div class="job-company">Franklin High School</div>
-          <div class="job-description">
-            Weekly sessions in number theory, combinatorics, and geometry to prepare for national mathematical competitions.
-          </div>
-        </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Since Fall 2024</div>
-          <div class="job-title">Chess Club</div>
-          <div class="job-company">The College of New Jersey</div>
-          <div class="job-description">
-            Participate in weekly tournaments and rated practice. Studying classical openings and tactics.
-          </div>
-        </div>
-
-        <div class="job-entry clearfix">
-          <div class="job-dates">Since Fall 2024</div>
-          <div class="job-title">Physics Club, Chairman of the Board</div>
-          <div class="job-company">The College of New Jersey</div>
-          <div class="job-description">
-            Lead and coordinate a dedicated team of volunteers to plan, organize, and execute club initiatives. Oversee all volunteer recruitment, delegation, and leadership development, ensuring the smooth operation of outreach, events, and projects in support of the campus physics community.
-          </div>
-        </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>Volunteer Experience</h3>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">Aug 2024 – Present</div>
-          <div class="job-title">Bonner Community Scholar</div>
-          <div class="job-company">The College of New Jersey</div>
-          <div class="job-description">
-            Complete 300+ community service hours per academic year. Engage in social justice education, civic engagement, and public service projects.
-          </div>
-        </div>
-        
-        <div class="job-entry clearfix">
-          <div class="job-dates">2024 – Present</div>
-          <div class="job-title">Red Cross Volunteer Representative</div>
-          <div class="job-company">American Red Cross</div>
-          <div class="job-description">
-            Serve as a youth representative for disaster relief coordination and public outreach campaigns.
-          </div>
-        </div>
-      </div>
-      
-      <div class="resume-section">
-        <h3>Professional Memberships</h3>
-        <div class="job-description">
-          <strong>Institute of Electrical and Electronics Engineers (IEEE)</strong> - Feb 2025 – Present<br>
-          <strong>American Physical Society (APS)</strong> - 2025 – Present<br>
-          <strong>Society for Industrial and Applied Mathematics (SIAM)</strong> - 2025 – Present
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <span>Ethan Ragbir</span>
+      <a href="Contact-Me.html">Contact</a>
+    </footer>
   </div>
 </body>
 </html>
